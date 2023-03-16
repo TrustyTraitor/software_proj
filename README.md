@@ -8,4 +8,4 @@ Functionality includes
 - Students registration for classes
 - Faculty management of their taught sections
 - Admin management of all courses and system settings
- - As well as editing all other users settings
+- - As well as editing all other users settings
