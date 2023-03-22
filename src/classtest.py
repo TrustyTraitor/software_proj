@@ -1,7 +1,7 @@
 import json
 
 # Opening JSON file
-f = open('users.json')
+f = open('./data/users.json')
 
 # returns JSON object as a dictionary
 data = json.load(f)
