@@ -13,26 +13,28 @@ data = json.load(f)
 
 #
 class User:
-    def __init__(self, name: str, id: int):
-        self.name = name
+    def __init__(self, id: int, password: str):
+        self.password = password
         self.id = id
 
 class Login:
-    def __init__(self, name: str, id: int):
-        self.name = name
+    def __init__(self, password: str, id: int):
+        self.password = password
         self.id = id
 
     def authenticate(self) -> bool:
         try:
-            return self.name == data[self.id].get("name") and self.id == data[self.id].get("id")
-        except:
+            return self.password == data[self.id].get("password") and self.id == data[self.id].get("id")
+        except:            
             return False
 
-name = input("Enter your name: ")
-id = int(input("Enter your id: "))
-currentUser = User(name=name, id=id)
 
-currentLogin = Login(name=currentUser.name, id=currentUser.id)
+id = int(input("Enter your id: "))
+password = str(input("Enter your password: "))
+
+currentUser = User(id=id, password=password)
+
+currentLogin = Login(id=currentUser.id, password=currentUser.password)
 
 is_authenticated = currentLogin.authenticate()
 print(is_authenticated)  
