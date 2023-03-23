@@ -1,10 +1,18 @@
 [
     {
         "id": 0,
-        "name": "jim"
+        "first_name": "jim",
+        "last_name": "smith",
+        "SSN": "123-45-6789",
+        "password": "1234",
+        "type": "admin"
     },
     {
         "id": 1,
-        "name": "jom"
+        "first_name": "jom",
+        "last_name": "smith",
+        "SSN":"987-65-4321",
+        "password": "4321",
+        "type": "user"
     }
 ]
