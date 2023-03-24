@@ -16,15 +16,15 @@
         "type": "student"
     },
     {
-        "id": 1,
+        "id": 2,
         "first_name": "Connor",
-        "last_name": "sucks",
+        "last_name": "Fish",
         "SSN":"987-65-4321",
         "password": "4321",
-        "type": "student"
+        "type": "faculty"
     },
     {
-        "id": 1,
+        "id": 3,
         "first_name": "Laila",
         "last_name": "guac",
         "SSN":"987-65-4321",
@@ -32,9 +32,17 @@
         "type": "student"
     },
     {
-        "id": 1,
+        "id": 4,
         "first_name": "Mikey",
         "last_name": "GGG",
+        "SSN":"987-65-4321",
+        "password": "4321",
+        "type": "student"
+    },
+    {
+        "id": 5,
+        "first_name": "Ball",
+        "last_name": "Zach",
         "SSN":"987-65-4321",
         "password": "4321",
         "type": "student"
