@@ -17,7 +17,8 @@ class Course:
 		"""
 		Prints subject code and course number
 		"""
-		print(f'\n{self.subject_code}-{self.course_number}-', end='')
+		print(f'\n{self.title}')
+		print(f'{self.subject_code}-{self.course_number}-', end='')
 
 
 class Section:
