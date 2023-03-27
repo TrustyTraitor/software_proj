@@ -1,19 +1,25 @@
 import json
 
-#open the file
-with open('./data/users.json', 'r') as file:
-    #read the file
-    users = json.load(file)
+class StudentLister:
+    def __init__(self):
+        # Load the user data from the JSON file
+        with open('./data/users.json', 'r') as file:
+            self.users = json.load(file)
 
-#create an empty list
-students = []
+        # Create an empty list to store the students
+        self.students = []
 
-#loop through the users
-for user in users:
-    #if the user is a student, append the user's name to the students list
-    if user['type'] == 'student':
-        students.append(user['first_name'] + ' ' + user['last_name'])
+    def list_students(self):
+        # Loop through the users and add any students to the students list
+        for user in self.users:
+            if user['type'] == 'student':
+                self.students.append(user['first_name'] + ' ' + user['last_name'])
+        # Print the list of students
+        print(self.students)
 
-#print the list of students
-print(students)
+if __name__ == '__main__':
+    # Create an instance of the StudentLister class and call the list_students method
+    student_lister = StudentLister()
+    student_lister.list_students()
+
 
