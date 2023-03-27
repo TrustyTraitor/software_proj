@@ -1,6 +1,6 @@
 class Course:
 	"""
-	Course contains subject code, course number, title, description and a list of sections
+		Course contains subject code, course number, title, description and a list of sections
 	"""
 	def __init__(self, 
 	      subj_code, number, 
@@ -20,6 +20,36 @@ class Course:
 		print(f'\n{self.title}')
 		print(f'{self.subject_code}-{self.course_number}-', end='')
 
+def search(courses: Course, query: str):
+		"""
+			Takes in list of courses and a string describing the course to be located\n
+			The query string should be in the form\n
+			\tCSC-1710-01\n
+			\tDEPT-CODE-SECTION
+
+			returns a tuple of (course,section) if found or (-1,-1) if not found
+		"""
+		while True:
+
+			dept, code, sect = query.upper().split('-')
+			section: Section = -1
+			course: Course = -1
+			
+			for c in courses:
+				if c.subject_code != dept:
+					continue
+
+				if c.course_number != code:
+					continue
+
+				for s in c.sections:
+					if s.section != sect:
+						continue
+
+					section = s
+					course = c
+				
+			return (course,section)
 
 class Section:
 	"""

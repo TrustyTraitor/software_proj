@@ -5,21 +5,21 @@
 
 import json
 
+from classes.User import User
+
 # Opening JSON file
 f = open('./data/users.json')
 
-# returns JSON object as a dictionary
-data = json.load(f)
 
 #
-class User:
-    def __init__(self, id: int, password: str):
-        self.password = password
-        self.id = id
-        self.type = str()
-        self.first_name = str()
-        self.last_name = str()
-        self.SSN = str()
+# class User:
+#     def __init__(self, id: int, password: str):
+#         self.password = password
+#         self.id = id
+#         self.type = str()
+#         self.first_name = str()
+#         self.last_name = str()
+#         self.SSN = str()
 
 
 
@@ -41,25 +41,28 @@ class Login:
         user.last_name = data[self.id].get("last_name")
         user.SSN = data[self.id].get("SSN")
 
+	def login(user: User):
+		# returns JSON object as a dictionary
+		data = json.load(f)
+                
+		id = int(input("Enter your id: "))
+		password = str(input("Enter your password: "))
 
-id = int(input("Enter your id: "))
-password = str(input("Enter your password: "))
+		currentUser = User(id=id, password=password)
 
-currentUser = User(id=id, password=password)
+		currentLogin = Login(id=currentUser.id, password=currentUser.password)
 
-currentLogin = Login(id=currentUser.id, password=currentUser.password)
-
-is_authenticated = currentLogin.authenticate()
-print(is_authenticated)  
-if is_authenticated:
-    currentLogin.populateUser(currentUser)
-    print(currentUser.first_name)
-    print(currentUser.last_name)
-    print(currentUser.SSN)
-    print(currentUser.type)
-    
+		is_authenticated = currentLogin.authenticate()
+		print(is_authenticated)  
+		if is_authenticated:
+			currentLogin.populateUser(currentUser)
+			print(currentUser.first_name)
+			print(currentUser.last_name)
+			print(currentUser.SSN)
+			print(currentUser.type)
+			
 
 
-#close JSON file
-f.close()
+		#close JSON file
+		f.close()
 
