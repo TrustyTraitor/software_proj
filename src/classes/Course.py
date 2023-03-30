@@ -35,7 +35,8 @@ class Section:
     def __init__(self,
                  section, prof, seats,
                  building, room,
-                 days, start_time, end_time):
+                 days, start_time, end_time,
+                 books, materials):
         # Section Number
         self.section: str = section
 
@@ -48,10 +49,22 @@ class Section:
         self.start_time: str = start_time
         self.end_time: str = end_time
 
-        self.books = []
-        self.materials = []
+        self.books: List[str] = []
+        self.materials: List[str] = []
 
         self.students = []
+
+    def get_materials(self):
+        return self.materials
+
+    def get_books(self):
+        return self.books
+
+    def set_materials(self, materials: List[str]):
+        pass
+
+    def set_books(self, materials: List[str]):
+        pass
 
     def print(self):
         """
@@ -86,7 +99,8 @@ def get_courses() -> List[Course]:
                 courses[idx].sections.append(
                     Section(sect, section["Professor"], section["Seats"],
                             section["Building"], section["Room"],
-                            section["MeetingDays"], section["StartTime"], section["EndTime"]
+                            section["MeetingDays"], section["StartTime"], section["EndTime"],
+                            section["Books"], section["Materials"]
                             )
                 )
 
@@ -94,20 +108,20 @@ def get_courses() -> List[Course]:
 
 
 def print_courses(courses: List[Course]):
-        for c in courses:
-            for s in c.sections:
-                c.print()
-                s.print()
+    for c in courses:
+        for s in c.sections:
+            c.print()
+            s.print()
 
 
 def course_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
     """
-	Takes in list of courses and a string describing the course to be located\n
-	The query string should be in the form\n
-	\tCSC-1710-01\n
-	\tDEPT-CODE-SECTION
+        Takes in list of courses and a string describing the course to be located\n
+        The query string should be in the form\n
+        \tCSC-1710-01\n
+        \tDEPT-CODE-SECTION
 
-	returns a tuple of (course,section) if found or (-1,-1) if not found
+        returns a tuple of (course,section) if found or (-1,-1) if not found
     """
     while True:
 
