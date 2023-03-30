@@ -1,9 +1,10 @@
-from typing import List,Tuple
+from typing import List, Tuple
 import json
+
 
 class Course:
     """
-            Course contains subject code, course number, title, description and a list of sections
+    Course contains subject code, course number, title, description and a list of sections
     """
 
     def __init__(self,
@@ -47,6 +48,9 @@ class Section:
         self.start_time: str = start_time
         self.end_time: str = end_time
 
+        self.books = []
+        self.materials = []
+
         self.students = []
 
     def print(self):
@@ -89,7 +93,7 @@ def get_courses() -> List[Course]:
     return courses
 
 
-def course_search(courses: List[Course], query: str) -> Tuple[Course,Section]:
+def course_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
     """
             Takes in list of courses and a string describing the course to be located\n
             The query string should be in the form\n

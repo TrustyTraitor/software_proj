@@ -19,14 +19,14 @@ objects to ensure data coherence (see view_courses.py)
 
 from classes.Course import Course, Section, search, get_courses
 from view_courses import View_Courses
-from classes.User import User, get_users
+from classes.User import User, get_user
 from typing import List
 def main():
     # init objects that will be passed to functions later
     users: List[User] = []
     courses: List[Course] = []
 
-    users = get_users()
+    users = get_user()
     courses = get_courses()
 
     View_Courses.print_courses(courses)

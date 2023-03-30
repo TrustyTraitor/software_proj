@@ -1,7 +1,8 @@
 from classes.Course import Section
 from classes.Course import Course
 
-from typing import List,Tuple
+from typing import List, Tuple
+
 
 class User:
     def __init__(self,
@@ -14,7 +15,8 @@ class User:
         self.password = password
         self.u_type = u_type
 
-        self.__sections: List[Tuple[Course,Section]] = []  # __ means this variable is private
+        # __ means this variable is private
+        self.__sections: List[Tuple[Course, Section]] = []
 
     def add_section(self, course: Course, section: Section) -> None:
         """
@@ -23,10 +25,10 @@ class User:
                 (Course,Section)
         """
         self.__sections.append(
-            (course,section)
+            (course, section)
         )
 
-    def get_sections(self) -> Tuple[Course,Section]:
+    def get_sections(self) -> Tuple[Course, Section]:
         """
                 Returns a tuple in the form of\n
                 (course,section)
@@ -39,5 +41,8 @@ class User:
                 f'{c[0].subject_code}-{c[0].course_number}-{c[1].section}')
 
 
-def get_users() -> List[User]:
+def get_user(username: str, password: str) -> User:
+    """
+        Locates a user from the 'database'
+    """
     pass
