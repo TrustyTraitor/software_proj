@@ -8,8 +8,8 @@ from typing import List
 
 def main():
     # init lists that will be passed to functions later
-    users: List[User] = [] # This is the list of all users
-    courses: List[Course] = [] # this is the list of all courses
+    users: List[User] = []  # This is the list of all users
+    courses: List[Course] = []  # this is the list of all courses
 
     users = get_users()
     courses = get_courses()
@@ -18,7 +18,7 @@ def main():
     while not current_user:
         id, password = input("Enter ID and Password: ").split(' ')
         current_user = login(users, id, password)
-    
+
     print("Current Logged in user Info: ")
     current_user.print()
 
