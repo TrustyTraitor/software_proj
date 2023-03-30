@@ -17,9 +17,10 @@ objects to ensure data coherence (see view_courses.py)
 
 
 
-from classes.Course import Course, Section, search, get_courses
+from classes.Course import Course, Section, get_courses
 from view_courses import View_Courses
 from classes.User import User, get_users
+from LogIn import Login
 from typing import List
 def main():
     # init objects that will be passed to functions later
@@ -29,11 +30,19 @@ def main():
     users = get_users()
     courses = get_courses()
 
-    View_Courses.print_courses(courses)
+    user = 0
+    while not user:
+        id, password = input("Enter ID and Password: ").split(' ')
+        user = Login.login(users, id, password)
+	
+    user.print()
+
+
+    # View_Courses.print_courses(courses)
 
     # main program loop is here (so like 99% of the code)
-    while True:
-        pass
+    # while True:
+    #     pass
 
 
 if __name__ == '__main__':

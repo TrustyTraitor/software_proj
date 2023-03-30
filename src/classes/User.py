@@ -36,17 +36,16 @@ class User:
         """
         return self.__sections
 
+    def print(self) -> None:
+        
+        print(f'Id: {self.id}\n \
+Name: {self.first_name} {self.last_name}\n \
+Permission Level: {self.u_type}')
+
     def print_registered_sections(self) -> None:
         for c in self.__sections:
             print(
                 f'{c[0].subject_code}-{c[0].course_number}-{c[1].section}')
-
-
-def get_user(users: List[User], id: str, password: str) -> User:
-    """
-        Locates a user from the 'database'
-    """
-    pass
 
 
 def get_users() -> List[User]:
@@ -56,7 +55,7 @@ def get_users() -> List[User]:
         data = json.load(file)
         
     for u in data:
-        id = u['id']
+        id = str(u['id'])
         f_name = u['first_name']
         l_name = u['last_name']
         ssn = u['SSN']
