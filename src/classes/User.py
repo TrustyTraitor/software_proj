@@ -21,9 +21,9 @@ class User:
 
     def add_section(self, course: Course, section: Section) -> None:
         """
-                Requires a Course object and Section object
-                Appends to the __sections member a tuple in the form of\n
-                (Course,Section)
+			Requires a Course object and Section object
+			Appends to the __sections member a tuple in the form of\n
+			(Course,Section)
         """
         self.__sections.append(
             (course, section)
@@ -31,16 +31,18 @@ class User:
 
     def get_sections(self) -> Tuple[Course, Section]:
         """
-                Returns a tuple in the form of\n
-                (course,section)
+			Returns a tuple in the form of\n
+			(course,section)
         """
         return self.__sections
 
     def print(self) -> None:
+        """
         
-        print(f'Id: {self.id}\n \
-Name: {self.first_name} {self.last_name}\n \
-Permission Level: {self.u_type}')
+        """
+        print(
+            f'Id: {self.id}\nName: {self.first_name} {self.last_name}\nPermission Level: {self.u_type}'
+            )
 
     def print_registered_sections(self) -> None:
         for c in self.__sections:
