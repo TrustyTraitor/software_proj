@@ -14,21 +14,24 @@ objects to ensure data coherence (see view_courses.py)
     and in general the object classes are located there
 """
 
-from classes.Course import Course
-from classes.Course import Section
-from classes.User import User
 
+
+
+from classes.Course import Course, Section, search, get_courses
 from view_courses import View_Courses
-
-
+from classes.User import User, get_users
+from typing import List
 def main():
     # init objects that will be passed to functions later
-    users: User = []
-    courses: Course = []
+    users: List[User] = []
+    courses: List[Course] = []
 
-    courses = View_Courses.get_courses()
+    users = get_users()
+    courses = get_courses()
 
-	# main program loop is here (so like 99% of the code)
+    View_Courses.print_courses(courses)
+
+    # main program loop is here (so like 99% of the code)
     while True:
         pass
 

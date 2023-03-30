@@ -1,22 +1,19 @@
-import json
-
-from classes.Course import Course
-from classes.Course import Section
-from classes.Course import search
+from classes.Course import Course, Section, course_search
 from classes.User import User
-
 from view_courses import View_Courses
+
+from typing import List
 
 
 class Register:
-    def register(courses: Course, user: User):
+    def register(courses: List[Course], user: User):
         section_located = False
         while not section_located:
             View_Courses.print_courses(courses)
 
             section_str = input(
                 "Please enter the section name to add to registry\n(for example CSC-1720-01) -> ")
-            cour, sect = search(courses, section_str)
+            cour, sect = course_search(courses, section_str)
 
             if sect == -1:
                 print("Failed to locate specified class, please try again")
