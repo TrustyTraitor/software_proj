@@ -93,14 +93,21 @@ def get_courses() -> List[Course]:
     return courses
 
 
+def print_courses(courses: List[Course]):
+        for c in courses:
+            for s in c.sections:
+                c.print()
+                s.print()
+
+
 def course_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
     """
-            Takes in list of courses and a string describing the course to be located\n
-            The query string should be in the form\n
-            \tCSC-1710-01\n
-            \tDEPT-CODE-SECTION
+	Takes in list of courses and a string describing the course to be located\n
+	The query string should be in the form\n
+	\tCSC-1710-01\n
+	\tDEPT-CODE-SECTION
 
-            returns a tuple of (course,section) if found or (-1,-1) if not found
+	returns a tuple of (course,section) if found or (-1,-1) if not found
     """
     while True:
 

@@ -1,31 +1,34 @@
-from classes.Course import Course, Section, get_courses
-from view_courses import View_Courses
+from classes.Course import Course, get_courses, print_courses
 from student_list import StudentList
 from classes.User import User, get_users
-from LogIn import Login
+from LogIn import login
 
 from typing import List
 
 
 def main():
-    # init objects that will be passed to functions later
-    users: List[User] = []
-    courses: List[Course] = []
+    # init lists that will be passed to functions later
+    users: List[User] = [] # This is the list of all users
+    courses: List[Course] = [] # this is the list of all courses
 
     users = get_users()
     courses = get_courses()
 
-    user = 0
-    while not user:
+    current_user = 0
+    while not current_user:
         id, password = input("Enter ID and Password: ").split(' ')
-        user = Login.login(users, id, password)
+        current_user = login(users, id, password)
+    
+    print("Current Logged in user Info: ")
+    current_user.print()
 
-    View_Courses.print_courses(courses)
+    print_courses(courses)
     StudentList.list_students(users)
 
     # main program loop is here (so like 99% of the code)
-    # while True:
-    #     pass
+    selection = 0
+    while True:
+        pass
 
 
 if __name__ == '__main__':

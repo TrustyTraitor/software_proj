@@ -6,12 +6,7 @@ from classes.Course import Section
 from typing import List
 
 class View_Courses:
-
-    def print_courses(courses: List[Course]):
-        for c in courses:
-            for s in c.sections:
-                c.print()
-                s.print()
+	pass
 
 
 if __name__ == '__main__':

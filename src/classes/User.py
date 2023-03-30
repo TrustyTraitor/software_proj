@@ -21,9 +21,9 @@ class User:
 
     def add_section(self, course: Course, section: Section) -> None:
         """
-			Requires a Course object and Section object
-			Appends to the __sections member a tuple in the form of\n
-			(Course,Section)
+		Requires a Course object and Section object
+		Appends to the __sections member a tuple in the form of\n
+		(Course,Section)
         """
         self.__sections.append(
             (course, section)
@@ -31,14 +31,14 @@ class User:
 
     def get_sections(self) -> Tuple[Course, Section]:
         """
-			Returns a tuple in the form of\n
-			(course,section)
+		Returns a tuple in the form of\n
+		(course,section)
         """
         return self.__sections
 
     def print(self) -> None:
         """
-        
+        Prints out a user's id, name, and permission level
         """
         print(
             f'Id: {self.id}\nName: {self.first_name} {self.last_name}\nPermission Level: {self.u_type}'
@@ -51,6 +51,9 @@ class User:
 
 
 def get_users() -> List[User]:
+    """
+	Reads the 'database' to get the list of users
+    """
     users: List[User] = []
     
     with open("./data/users.json", 'r') as file:
