@@ -3,6 +3,7 @@ from classes.Course import Course
 
 from typing import List, Tuple
 
+import json
 
 class User:
     def __init__(self,
@@ -41,8 +42,27 @@ class User:
                 f'{c[0].subject_code}-{c[0].course_number}-{c[1].section}')
 
 
-def get_user(username: str, password: str) -> User:
+def get_user(users: List[User], id: str, password: str) -> User:
     """
         Locates a user from the 'database'
     """
     pass
+
+
+def get_users() -> List[User]:
+    users: List[User] = []
+    
+    with open("./data/users.json", 'r') as file:
+        data = json.load(file)
+        
+    for u in data:
+        id = u['id']
+        f_name = u['first_name']
+        l_name = u['last_name']
+        ssn = u['SSN']
+        password = u['password']
+        u_type = u['type']
+        
+        users.append(User(id, f_name, l_name, ssn, password,u_type))
+
+    return users
