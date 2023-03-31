@@ -1,37 +1,32 @@
-"""
-Heres how I imagine we will structure our project:
-
-- Use this main file to call all other use case functions
-- The TUI (terminal user interface) code will be mostly in here
-- Each use case where applicable should return lists of 
-objects to ensure data coherence (see view_courses.py)
-
-"""
-
-"""
-	Also check out the classes in the classes folder
-    I will be adding utility functions as I run into the need for them 
-    and in general the object classes are located there
-"""
-
-
-
-
-from classes.Course import Course, Section, search, get_courses
-from view_courses import View_Courses
+from classes.Course import Course, get_courses, print_all_courses
+from student_list import StudentList
 from classes.User import User, get_users
+from LogIn import login
+
 from typing import List
+
+
 def main():
-    # init objects that will be passed to functions later
-    users: List[User] = []
-    courses: List[Course] = []
+    # init lists that will be passed to functions later
+    users: List[User] = []  # This is the list of all users
+    courses: List[Course] = []  # this is the list of all courses
 
     users = get_users()
     courses = get_courses()
 
-    View_Courses.print_courses(courses)
+    current_user = 0
+    while not current_user:
+        id, password = input("Enter ID and Password: ").split(' ')
+        current_user = login(users, id, password)
+
+    print("Current Logged in user Info: ")
+    current_user.print()
+
+    print_all_courses(courses)
+    StudentList.list_students(users)
 
     # main program loop is here (so like 99% of the code)
+    selection = 0
     while True:
         pass
 

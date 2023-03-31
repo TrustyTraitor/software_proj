@@ -8,8 +8,8 @@ class Course:
     """
 
     def __init__(self,
-                 subj_code, number,
-                 title, desc):
+                 subj_code:str, number: str,
+                 title: str, desc: str):
 
         self.subject_code: str = subj_code
         self.course_number: str = number
@@ -18,7 +18,7 @@ class Course:
 
         self.sections: Section = []
 
-    def print(self):
+    def print(self) -> None:
         """
         Prints subject code and course number
         """
@@ -33,9 +33,10 @@ class Section:
     """
 
     def __init__(self,
-                 section, prof, seats,
-                 building, room,
-                 days, start_time, end_time):
+                 section: str, prof: str, seats: int,
+                 building: str, room: str,
+                 days: str, start_time: str, end_time: str,
+                 books: List[str], materials: List[str]):
         # Section Number
         self.section: str = section
 
@@ -48,12 +49,18 @@ class Section:
         self.start_time: str = start_time
         self.end_time: str = end_time
 
-        self.books = []
-        self.materials = []
+        self.books: List[str] = books
+        self.materials: List[str] = materials
 
         self.students = []
 
-    def print(self):
+    def add_material(self, material: str) -> None:
+        self.materials.append(material)
+
+    def add_book(self, book: str) -> None:
+        self.books.append(str)
+
+    def print(self) -> None:
         """
         Run Course.print() before running this or output will look goofy
         """
@@ -61,6 +68,8 @@ class Section:
         print(f'\t{self.building}, {self.room}')
         print(f'\t{self.days} {self.start_time} - {self.end_time}')
         print(f'\t{self.professor}')
+        print(f'\tBooks:{self.books}')
+        print(f'\tMaterials:{self.materials}')
 
 
 def get_courses() -> List[Course]:
@@ -86,21 +95,36 @@ def get_courses() -> List[Course]:
                 courses[idx].sections.append(
                     Section(sect, section["Professor"], section["Seats"],
                             section["Building"], section["Room"],
-                            section["MeetingDays"], section["StartTime"], section["EndTime"]
+                            section["MeetingDays"], section["StartTime"], section["EndTime"],
+                            section["Books"], section["Materials"]
                             )
                 )
 
     return courses
 
 
+"""
+These are all helper functions that are not part of either class
+"""
+
+def print_all_courses(courses: List[Course]) -> None:
+    """
+	Prints all sections and their information
+    """
+    for c in courses:
+        for s in c.sections:
+            c.print()
+            s.print()
+
+
 def course_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
     """
-            Takes in list of courses and a string describing the course to be located\n
-            The query string should be in the form\n
-            \tCSC-1710-01\n
-            \tDEPT-CODE-SECTION
+        Takes in list of courses and a string describing the course to be located\n
+        The query string should be in the form\n
+        \tCSC-1710-01\n
+        \tDEPT-CODE-SECTION
 
-            returns a tuple of (course,section) if found or (-1,-1) if not found
+        returns a tuple of (course,section) if found or (-1,-1) if not found
     """
     while True:
 
