@@ -7,14 +7,14 @@ import json
 
 class User:
     def __init__(self,
-                 id, f_name, l_name,
-                 ssn, password, u_type):
-        self.id = id
-        self.first_name = f_name
-        self.last_name = l_name
-        self.ssn = ssn
-        self.password = password
-        self.u_type = u_type
+                 id: int, f_name: str, l_name: str,
+                 ssn: str, password: str, u_type: str):
+        self.id: int = id
+        self.first_name: str = f_name
+        self.last_name: str = l_name
+        self.ssn: str = ssn
+        self.password: str = password
+        self.u_type: str = u_type
 
         # __ means this variable is private
         self.__sections: List[Tuple[Course, Section]] = []
@@ -49,6 +49,10 @@ class User:
             print(
                 f'{c[0].subject_code}-{c[0].course_number}-{c[1].section}')
 
+
+"""
+Helper functions not part of User class
+"""
 
 def get_users() -> List[User]:
     """

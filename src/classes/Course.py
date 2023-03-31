@@ -8,8 +8,8 @@ class Course:
     """
 
     def __init__(self,
-                 subj_code, number,
-                 title, desc):
+                 subj_code:str, number: str,
+                 title: str, desc: str):
 
         self.subject_code: str = subj_code
         self.course_number: str = number
@@ -18,7 +18,7 @@ class Course:
 
         self.sections: Section = []
 
-    def print(self):
+    def print(self) -> None:
         """
         Prints subject code and course number
         """
@@ -33,10 +33,10 @@ class Section:
     """
 
     def __init__(self,
-                 section, prof, seats,
-                 building, room,
-                 days, start_time, end_time,
-                 books, materials):
+                 section: str, prof: str, seats: int,
+                 building: str, room: str,
+                 days: str, start_time: str, end_time: str,
+                 books: List[str], materials: List[str]):
         # Section Number
         self.section: str = section
 
@@ -49,24 +49,18 @@ class Section:
         self.start_time: str = start_time
         self.end_time: str = end_time
 
-        self.books: List[str] = []
-        self.materials: List[str] = []
+        self.books: List[str] = books
+        self.materials: List[str] = materials
 
         self.students = []
 
-    def get_materials(self):
-        return self.materials
+    def add_material(self, material: str) -> None:
+        self.materials.append(material)
 
-    def get_books(self):
-        return self.books
+    def add_book(self, book: str) -> None:
+        self.books.append(str)
 
-    def set_materials(self, materials: List[str]):
-        pass
-
-    def set_books(self, materials: List[str]):
-        pass
-
-    def print(self):
+    def print(self) -> None:
         """
         Run Course.print() before running this or output will look goofy
         """
@@ -74,6 +68,8 @@ class Section:
         print(f'\t{self.building}, {self.room}')
         print(f'\t{self.days} {self.start_time} - {self.end_time}')
         print(f'\t{self.professor}')
+        print(f'\tBooks:{self.books}')
+        print(f'\tMaterials:{self.materials}')
 
 
 def get_courses() -> List[Course]:
@@ -107,7 +103,14 @@ def get_courses() -> List[Course]:
     return courses
 
 
-def print_courses(courses: List[Course]):
+"""
+These are all helper functions that are not part of either class
+"""
+
+def print_all_courses(courses: List[Course]) -> None:
+    """
+	Prints all sections and their information
+    """
     for c in courses:
         for s in c.sections:
             c.print()

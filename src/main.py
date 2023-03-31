@@ -1,4 +1,4 @@
-from classes.Course import Course, get_courses, print_courses
+from classes.Course import Course, get_courses, print_all_courses
 from student_list import StudentList
 from classes.User import User, get_users
 from LogIn import login
@@ -22,7 +22,7 @@ def main():
     print("Current Logged in user Info: ")
     current_user.print()
 
-    print_courses(courses)
+    print_all_courses(courses)
     StudentList.list_students(users)
 
     # main program loop is here (so like 99% of the code)
