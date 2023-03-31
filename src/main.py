@@ -1,6 +1,6 @@
 from classes.Course import Course, get_courses, print_all_courses
 from student_list import StudentList
-from classes.User import User, get_users
+from classes.User import User, load_users
 from LogIn import login
 
 from typing import List
@@ -11,7 +11,7 @@ def main():
     users: List[User] = []  # This is the list of all users
     courses: List[Course] = []  # this is the list of all courses
 
-    users = get_users()
+    users = load_users()
     courses = get_courses()
 
     current_user = 0
