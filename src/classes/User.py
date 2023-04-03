@@ -54,7 +54,7 @@ class User:
 Helper functions not part of User class
 """
 
-def get_users() -> List[User]:
+def load_users() -> List[User]:
     """
 	Reads the 'database' to get the list of users
     """
