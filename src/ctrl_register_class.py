@@ -7,7 +7,7 @@ from ctrl_view_courses import ctrl_View_Courses
 from typing import List
 
 
-class ctrl_Student_Register:	
+class ctrl_Student_Register_Class:	
 	def __query_runner(courses: List[Course], user: User, query: str):
 		"""
 			Returns different values based on the Errors enum
@@ -23,7 +23,7 @@ class ctrl_Student_Register:
 			else:
 				return Errors.SECTION_FULL
 
-	def register(courses: List[Course], user: User):
+	def register_class(courses: List[Course], user: User):
 		res = Errors.FAIL
 		while (res != Errors.SUCCESS):
 			if res == Errors.SECTION_FULL:

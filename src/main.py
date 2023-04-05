@@ -6,7 +6,7 @@ from Entities.User import User, load_users
 from ctrl_login import ctrl_Login
 from ctrl_view_students import ctrl_Admin_View_Students
 from ctrl_view_courses import ctrl_View_Courses
-from ctrl_register_classes import ctrl_Student_Register
+from ctrl_register_class import ctrl_Student_Register_Class
 
 # stdlib imports
 from typing import List
@@ -37,7 +37,7 @@ def main():
         if selection == 1:
             ctrl_View_Courses.view(courses)
         elif selection == 2:
-            ctrl_Student_Register(courses,current_user)
+            ctrl_Student_Register_Class(courses,current_user)
         elif selection == 3:
             current_user.print_sections()
         elif selection == 4:
