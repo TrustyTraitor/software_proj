@@ -1,11 +1,11 @@
 # Type imports (and some specific functions)
-from classes.Course import Course, load_courses
-from classes.User import User, load_users
+from Entities.Course import Course, load_courses
+from Entities.User import User, load_users
 
 # Boundary and Control Classes
 from ctrl_login import ctrl_Login
-from view_students import ctrl_Admin_View_Students
-from view_courses import ctrl_View_Courses
+from ctrl_view_students import ctrl_Admin_View_Students
+from ctrl_view_courses import ctrl_View_Courses
 from ctrl_register_classes import ctrl_Student_Register
 
 # stdlib imports

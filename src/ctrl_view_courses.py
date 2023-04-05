@@ -1,5 +1,5 @@
-from classes.Course import Course
-from classes.Course import print_all_courses
+from Entities.Course import Course
+from Entities.Course import print_all_courses
 
 import json
 from typing import List

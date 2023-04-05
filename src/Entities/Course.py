@@ -1,4 +1,4 @@
-from classes.Errors import Errors
+from Entities.Errors import Errors
 
 from typing import List, Tuple
 import json

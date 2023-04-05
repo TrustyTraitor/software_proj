@@ -1,5 +1,5 @@
-from classes.Course import Section
-from classes.User import User
+from Entities.Course import Section
+from Entities.User import User
 
 class ctrl_Admin_Assign_Student:
 	def assign_student(section: Section, user: User):
