@@ -1,37 +1,29 @@
-import json
+class CourseAssign:
+    def __init__(self, users):
+        self.users = users
+        self.students = [f'{user.first_name} {user.last_name}' for user in self.users if user.u_type == 'student']
+        self.course = input('What course would you like to modify? ')
 
-class CourseRemover:
-    def __init__(self):
-        # Load the course data from the JSON file
-        with open('./data/courses.json', 'r') as file:
-            self.courses = json.load(file)
+    def assign_students(self):
+        for student in self.students:
+            assign = input(f'Would you like to assign {student} to {self.course}? (y/n) ')
+            if assign == 'y':
+                print(f'{student} has been assigned to {self.course}')
 
-        # Prompt the user to enter a course name
-        self.course_name = input("Which course do you want to remove a student from? ")
-
-    def remove_student(self):
-        for course in self.courses:
-            if course['name'] == self.course_name:
-                print("The following students are in " + self.course_name + ":")
-                for student in course['students']:
-                    print("- " + student)
-                # Prompt the user to enter a student name to remove
-                student_name = input("Which student do you want to remove from " + self.course_name + "? ")
-                # If the student is in the course, remove them and print a message
-                if student_name in course['students']:
-                    course['students'].remove(student_name)
-                    print(student_name + " has been removed from " + self.course_name)
-                    with open('./data/courses.json', 'w') as file:
-                        json.dump(self.courses, file)
-                    break
-                # If the student is not in the course, print a message indicating that they could not be removed
-                else:
-                    print(student_name + " is not in " + self.course_name)
-                    break
-        # If no course with the matching name is found, print a message
-        else:
-            print(self.course_name + " does not exist")
+    def remove_students(self):
+        while True:
+            remove_student = input('Enter the name of the student to remove: ')
+            if remove_student not in self.students:
+                print('Student not found in course.')
+            else:
+                confirm = input(f'Are you sure you want to remove {remove_student} from {self.course}? (y/n) ')
+                if confirm == 'y':
+                    self.students.remove(remove_student)
+                    print(f'{remove_student} has been removed from {self.course}.')
+                break
 
 if __name__ == '__main__':
-    course_remover = CourseRemover()
-    course_remover.remove_student()
+    # Create an instance of the CourseAssign class and call the assign_students and remove_students methods
+    course_assign = CourseAssign()
+    course_assign.assign_students()
+    course_assign.remove_students()
