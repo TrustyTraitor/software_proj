@@ -82,7 +82,11 @@ class Section:
         print(f'\tMaterials:{self.materials}')
 
 
-def get_courses() -> List[Course]:
+"""
+These are all helper functions that are not part of either class
+"""
+
+def load_courses() -> List[Course]:
     """
     This will read courses from the data/courses.json\n
     returns a list of courses \n
@@ -111,11 +115,6 @@ def get_courses() -> List[Course]:
                 )
 
     return courses
-
-
-"""
-These are all helper functions that are not part of either class
-"""
 
 
 def print_all_courses(courses: List[Course]) -> None:

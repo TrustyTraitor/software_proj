@@ -1,8 +1,8 @@
-from classes.Course import Course, Section, course_search, get_courses
+from classes.Course import Course, Section, course_search
 from classes.User import User
-from view_courses import View_Courses
-
 from classes.Errors import Errors
+
+from view_courses import View_Courses
 
 from typing import List
 
