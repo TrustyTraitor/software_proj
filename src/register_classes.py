@@ -1,51 +1,42 @@
-import json
-
-from classes.Course import Course
-from classes.Course import Section
+from classes.Course import Course, Section, course_search
 from classes.User import User
+from classes.Errors import Errors
 
 from view_courses import View_Courses
 
+from typing import List
+
 
 class Register:
-	def register(courses: Course, user:User):
-		while True:
-			View_Courses.print_courses(courses)
+    def query_runner(courses: List[Course], user: User, query: str):
+        """
+            Returns different values based on the Errors enum
+        """
+        cour, sect = course_search(courses, query)
 
-			dept, code, sect = input("Please enter the section name to add to registry\n(for example CSC-1720-01) -> ").upper().split('-')
-			
-			section_found = False
-			for c in courses:
-				if c.subject_code != dept:
-					continue
+        if sect == -1:
+            return Errors.FAILED_TO_LOCATE
+        else:
+            if sect.add_student(user) == Errors.SUCCESS:
+                user.add_section(cour, sect)
+                return Errors.SUCCESS
+            else:
+                return Errors.SECTION_FULL
 
-				if c.course_number != code:
-					continue
+    def register(courses: List[Course], user: User):
+        res = Errors.FAIL
+        while (res != Errors.SUCCESS):
+            if res == Errors.SECTION_FULL:
+                print("Section full!")
+            elif res == Errors.FAILED_TO_LOCATE:
+                print("Failed to locate Section")
 
-				for s in c.sections:
-					if s.section != sect:
-						continue
-
-					section_found = True
-					if s.available_seats > 0:
-						user.add_section(c,s)
-						s.available_seats -= 1
-					else:
-						print("Section Full! Cannot register")
-				
-			if not section_found:
-				print("Failed to locate specified class, please try again")
-			else:
-				print("Successfully registered for class!")
-				break
-
+            View_Courses.view(courses)
+            query = input("Enter the section name (ex. CSC-1710-01): ")
+            res = Register.query_runner(courses, user, query)
+        
+        print("\n\nSuccessfully Registered for class!")
 
 
 if __name__ == '__main__':
-	courses = View_Courses.get_courses()
-	user = User(101,'michael','gain',123456789,'best_password','student')
-
-	Register.register(courses,user)
-	Register.register(courses,user)
-	Register.register(courses,user)
-	user.print_registered_sections()
+    pass
