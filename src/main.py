@@ -3,10 +3,10 @@ from classes.Course import Course, load_courses
 from classes.User import User, load_users
 
 # Boundary and Control Classes
-from login import ctrl_Login
+from ctrl_login import ctrl_Login
 from view_students import ctrl_Admin_View_Students
 from view_courses import ctrl_View_Courses
-from register_classes import ctrl_Student_Register
+from ctrl_register_classes import ctrl_Student_Register
 
 # stdlib imports
 from typing import List
