@@ -22,7 +22,7 @@ def main():
     current_user = 0
     while not current_user:
         id, password = input("Enter ID and Password: ").split(' ')
-        current_user = Login.Login(users, id, password)
+        current_user = ctrl_Login.Login(users, id, password)
 
     print(f'Welcome {current_user.first_name.capitalize()}!')
 

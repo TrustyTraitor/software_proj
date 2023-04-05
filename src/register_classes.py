@@ -33,7 +33,7 @@ class ctrl_Student_Register:
 
 			View_Courses.view(courses)
 			query = input("Enter the section name (ex. CSC-1710-01): ")
-			res = Register.__query_runner(courses, user, query)
+			res = ctrl_Student_Register.__query_runner(courses, user, query)
 		
 		print("\n\nSuccessfully Registered for class!")
 
