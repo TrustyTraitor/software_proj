@@ -2,7 +2,7 @@ from classes.Course import Course, Section, course_search
 from classes.User import User
 from classes.Errors import Errors
 
-from view_courses import View_Courses
+from view_courses import ctrl_View_Courses
 
 from typing import List
 
@@ -31,7 +31,7 @@ class ctrl_Student_Register:
 			elif res == Errors.FAILED_TO_LOCATE:
 				print("Failed to locate Section")
 
-			View_Courses.view(courses)
+			ctrl_View_Courses.view(courses)
 			query = input("Enter the section name (ex. CSC-1710-01): ")
 			res = ctrl_Student_Register.__query_runner(courses, user, query)
 		
