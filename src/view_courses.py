@@ -5,7 +5,7 @@ import json
 from typing import List
 
 
-class View_Courses:
+class ctrl_View_Courses:
     def view(courses: List[Course]):
     	print_all_courses(courses)
 

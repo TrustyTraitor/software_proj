@@ -1,11 +1,14 @@
+# Type imports (and some specific functions)
 from classes.Course import Course, load_courses
 from classes.User import User, load_users
 
-from login import Login
-from view_students import View_Students
-from view_courses import View_Courses
-from register_classes import Register
+# Boundary and Control Classes
+from login import ctrl_Login
+from view_students import ctrl_Admin_View_Students
+from view_courses import ctrl_View_Courses
+from register_classes import ctrl_Student_Register
 
+# stdlib imports
 from typing import List
 
 def main():
@@ -23,13 +26,6 @@ def main():
 
     print(f'Welcome {current_user.first_name.capitalize()}!')
 
-    # print("Current Logged in user Info: ")
-    # current_user.print()
-
-    # print_all_courses(courses)
-    # StudentList.list_students(users)
-
-    # main program loop is here (so like 99% of the code)
     selection = 0
     while True:
         print("\n\n\n")
@@ -39,13 +35,13 @@ def main():
         print("4. View Students")
         selection = int(input("Enter a selection: "))
         if selection == 1:
-            View_Courses.view(courses)
+            ctrl_View_Courses.view(courses)
         elif selection == 2:
-            Register.register(courses,current_user)
+            ctrl_Student_Register(courses,current_user)
         elif selection == 3:
             current_user.print_sections()
         elif selection == 4:
-            View_Students.view(users)
+            ctrl_Admin_View_Students.view(users)
 
         selection = 0
 
