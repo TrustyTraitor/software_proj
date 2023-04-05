@@ -1,9 +1,7 @@
-from classes.Course import Section
-from classes.Course import Course
-
 from typing import List, Tuple
 
 import json
+
 
 class User:
     def __init__(self,
@@ -17,24 +15,31 @@ class User:
         self.u_type: str = u_type
 
         # __ means this variable is private
-        self.__sections: List[Tuple[Course, Section]] = []
+        self.__sections = []
 
-    def add_section(self, course: Course, section: Section) -> None:
+    def add_section(self, course, section) -> None:
         """
-		Requires a Course object and Section object
-		Appends to the __sections member a tuple in the form of\n
-		(Course,Section)
+                Requires a Course object and Section object
+                Appends to the __sections member a tuple in the form of\n
+                (Course,Section)
         """
         self.__sections.append(
             (course, section)
         )
 
-    def get_sections(self) -> Tuple[Course, Section]:
+    def get_sections(self):
         """
-		Returns a tuple in the form of\n
-		(course,section)
+                Returns a tuple in the form of\n
+                (course,section)
         """
         return self.__sections
+
+    def print_sections(self):
+        abc = self.get_sections()
+        for a in abc:
+            c, s = a
+            c.print()
+            s.print()
 
     def print(self) -> None:
         """
@@ -42,7 +47,7 @@ class User:
         """
         print(
             f'Id: {self.id}\nName: {self.first_name} {self.last_name}\nPermission Level: {self.u_type}'
-            )
+        )
 
     def print_registered_sections(self) -> None:
         for c in self.__sections:
@@ -54,15 +59,16 @@ class User:
 Helper functions not part of User class
 """
 
+
 def load_users() -> List[User]:
     """
-	Reads the 'database' to get the list of users
+        Reads the 'database' to get the list of users
     """
     users: List[User] = []
-    
+
     with open("./data/users.json", 'r') as file:
         data = json.load(file)
-        
+
     for u in data:
         id = str(u['id'])
         f_name = u['first_name']
@@ -70,7 +76,7 @@ def load_users() -> List[User]:
         ssn = u['SSN']
         password = u['password']
         u_type = u['type']
-        
-        users.append(User(id, f_name, l_name, ssn, password,u_type))
+
+        users.append(User(id, f_name, l_name, ssn, password, u_type))
 
     return users
