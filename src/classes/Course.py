@@ -1,3 +1,5 @@
+from classes.Errors import Errors
+
 from typing import List, Tuple
 import json
 
@@ -8,7 +10,7 @@ class Course:
     """
 
     def __init__(self,
-                 subj_code:str, number: str,
+                 subj_code: str, number: str,
                  title: str, desc: str):
 
         self.subject_code: str = subj_code
@@ -16,7 +18,7 @@ class Course:
         self.title: str = title
         self.description: str = desc
 
-        self.sections: Section = []
+        self.sections = []
 
     def print(self) -> None:
         """
@@ -52,13 +54,21 @@ class Section:
         self.books: List[str] = books
         self.materials: List[str] = materials
 
-        self.students = []
+        self.__students = []
 
     def add_material(self, material: str) -> None:
         self.materials.append(material)
 
     def add_book(self, book: str) -> None:
         self.books.append(str)
+
+    def add_student(self, student) -> None:
+        if self.available_seats > 0:
+            self.__students.append(student)
+            self.available_seats -= 1
+            return Errors.SUCCESS
+        else:
+            return Errors.SECTION_FULL
 
     def print(self) -> None:
         """
@@ -107,9 +117,10 @@ def get_courses() -> List[Course]:
 These are all helper functions that are not part of either class
 """
 
+
 def print_all_courses(courses: List[Course]) -> None:
     """
-	Prints all sections and their information
+        Prints all sections and their information
     """
     for c in courses:
         for s in c.sections:
