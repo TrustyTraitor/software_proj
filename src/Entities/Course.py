@@ -1,6 +1,6 @@
 from Entities.Errors import Errors
 
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 import json
 
 
@@ -26,6 +26,37 @@ class Course:
         """
         print(f'\n{self.title}')
         print(f'{self.subject_code}-{self.course_number}-', end='')
+
+    def assign_faculty(self, section: str, faculty: str) -> None:
+        """
+        Assigns a faculty to a section in the course
+        """
+        for sec in self.sections:
+            if sec.section == section:
+                sec.professor = faculty
+                return
+        raise ValueError(f"No section found with section number '{section}'")
+
+    def admin_remove_faculty(self, section: str) -> None:
+        """
+        Removes faculty from a section in the course
+        """
+        for sec in self.sections:
+            if sec.section == section:
+                sec.professor = ""
+                return
+        raise ValueError(f"No section found with section number '{section}'")
+
+    def generate_student_registration_report(self) -> List[str]:
+        """
+        Generates a list of strings containing the registration information of students
+        """
+        report = []
+        for section in self.sections:
+            report.append(f'Section {section.section}:')
+            for student in section._Section__students:
+                report.append(f'\t{student.name} ({student.student_id})')
+        return report
 
 
 class Section:
@@ -157,3 +188,23 @@ def course_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
                 course = c
 
         return (course, section)
+
+def admin_add_course(roster: List[Course], subj_code: str, number: str, title: str, desc: str, sections: List[Section]) -> None:
+    """
+    Adds a new course to the roster
+    """
+    course = Course(subj_code, number, title, desc)
+    for section in sections:
+        course.add_section(section)
+    roster.append(course)
+
+def admin_remove_course(roster: List[Course], subj_code: str, number: str) -> bool:
+    """
+    Removes a course from the roster based on subject code and course number
+    """
+    for i, course in enumerate(roster):
+        if course.subject_code == subj_code and course.course_number == number:
+            roster.pop(i)
+            return True
+    return False
+
