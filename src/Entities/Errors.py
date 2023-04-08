@@ -7,3 +7,5 @@ class Errors(Enum):
     SECTION_FULL = auto()
     WRONG_PASSWORD = auto()
     MISMATCHED_PASSWORDS = auto()
+    ALREADY_ASSIGNED = auto()
+    NONE_ASSIGNED = auto()

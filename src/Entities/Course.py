@@ -27,26 +27,6 @@ class Course:
         print(f'\n{self.title}')
         print(f'{self.subject_code}-{self.course_number}-', end='')
 
-    def assign_faculty(self, section: str, faculty: str) -> None:
-        """
-        Assigns a faculty to a section in the course
-        """
-        for sec in self.sections:
-            if sec.section == section:
-                sec.professor = faculty
-                return
-        raise ValueError(f"No section found with section number '{section}'")
-
-    def admin_remove_faculty(self, section: str) -> None:
-        """
-        Removes faculty from a section in the course
-        """
-        for sec in self.sections:
-            if sec.section == section:
-                sec.professor = ""
-                return
-        raise ValueError(f"No section found with section number '{section}'")
-
     def generate_student_registration_report(self) -> List[str]:
         """
         Generates a list of strings containing the registration information of students
@@ -93,13 +73,33 @@ class Section:
     def add_book(self, book: str) -> None:
         self.books.append(str)
 
-    def add_student(self, student) -> None:
+    def add_student(self, student) -> Errors:
         if self.available_seats > 0:
             self.__students.append(student)
             self.available_seats -= 1
             return Errors.SUCCESS
         else:
             return Errors.SECTION_FULL
+
+    def remove_faculty(self) -> Errors:
+        """
+        Removes faculty from a section in the course
+        """
+        if self.professor == "":
+            return Errors.NONE_ASSIGNED
+        
+        self.professor = ""
+        return Errors.SUCCESS
+        
+    def assign_faculty(self, faculty: str) -> Errors:
+        """
+        Assigns a faculty to a section in the course
+        """
+        if self.professor != "":
+            return Errors.ALREADY_ASSIGNED
+        
+        self.professor = faculty
+        return Errors.SUCCESS
 
     def print(self) -> None:
         """
@@ -150,7 +150,7 @@ def load_courses() -> List[Course]:
 
 def print_all_courses(courses: List[Course]) -> None:
     """
-        Prints all sections and their information
+        Prints all sections and some of their information
     """
     for c in courses:
         for s in c.sections:

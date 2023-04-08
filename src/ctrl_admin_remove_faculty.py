@@ -1,6 +1,7 @@
 from typing import List
 from Entities.Course import Course
+from Entities.Course import Section
 
 class ctrl_Admin_Remove_Faculty:
-    def remove_faculty(course: Course, section: str) -> None:
-        course.admin_remove_faculty(section)
+    def remove_faculty(section: Section) -> None:
+        section.remove_faculty(section)
