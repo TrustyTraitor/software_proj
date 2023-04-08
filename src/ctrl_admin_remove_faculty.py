@@ -9,4 +9,4 @@ class ctrl_Admin_Remove_Faculty:
         if section == Errors.FAILED_TO_LOCATE:
             return Errors.FAILED_TO_LOCATE
         
-        section.remove_faculty(section)
+        section.remove_faculty()
