@@ -13,11 +13,21 @@ class ctrl_Edit_Personal_Information:
         selection = int(input("Enter a selection: "))
         if selection == 1:
             ctrl_Edit_Personal_Information.EditFirstName(u)
+
         elif selection == 2:
             ctrl_Edit_Personal_Information.EditLastName(u)
+
         elif selection == 3:
-            if (ctrl_Edit_Personal_Information.EditPassword(u) == Errors.WRONG_PASSWORD or ctrl_Edit_Personal_Information.EditPassword(u) == Errors.MISMATCHED_PASSWORDS):
+            password_result = ctrl_Edit_Personal_Information.EditPassword(u)
+            if password_result == Errors.SUCCESS:
+                return Errors.SUCCESS
+            elif password_result == Errors.WRONG_PASSWORD:
+                print("Incorrect password")
                 ctrl_Edit_Personal_Information.pickEdit(u)
+            elif password_result == Errors.MISMATCHED_PASSWORDS:
+                print("Passwords do not match")
+                ctrl_Edit_Personal_Information.pickEdit(u)
+
         elif selection == 4:
             return Errors.SUCCESS
 
@@ -38,10 +48,8 @@ class ctrl_Edit_Personal_Information:
                 u.password = newPasswordFirst
                 return Errors.SUCCESS
             else:
-                print("Passwords do not match")
                 return Errors.MISMATCHED_PASSWORDS
         else:
-            print("Incorrect password")
             return Errors.WRONG_PASSWORD
 
 
