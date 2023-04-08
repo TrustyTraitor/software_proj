@@ -5,3 +5,4 @@ class Errors(Enum):
     FAIL = auto()
     FAILED_TO_LOCATE = auto()
     SECTION_FULL = auto()
+    WRONG_TYPE = auto()

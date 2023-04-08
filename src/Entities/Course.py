@@ -60,9 +60,9 @@ class Section:
         self.materials.append(material)
 
     def add_book(self, book: str) -> None:
-        self.books.append(str)
+        self.books.append(book)
 
-    def add_student(self, student) -> None:
+    def add_student(self, student) -> Errors:
         if self.available_seats > 0:
             self.__students.append(student)
             self.available_seats -= 1
