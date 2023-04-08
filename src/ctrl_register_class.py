@@ -15,7 +15,7 @@ class ctrl_Student_Register_Class:
 		"""
 		cour, sect = course_search(courses, query)
 
-		if sect == -1:
+		if sect == Errors.FAILED_TO_LOCATE:
 			return Errors.FAILED_TO_LOCATE
 		else:
 			if sect.add_student(user) == Errors.SUCCESS:

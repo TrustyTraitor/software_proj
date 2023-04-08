@@ -158,20 +158,20 @@ def print_all_courses(courses: List[Course]) -> None:
             s.print()
 
 
-def course_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
+def section_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
     """
         Takes in list of courses and a string describing the course to be located\n
         The query string should be in the form\n
         \tCSC-1710-01\n
         \tDEPT-CODE-SECTION
 
-        returns a tuple of (course,section) if found or (-1,-1) if not found
+        returns a tuple of (course,section) if found or (Errors.FAILED_TO_LOCATE, Errors.FAILED_TO_LOCATE)
     """
     while True:
 
         dept, code, sect = query.upper().split('-')
-        section: Section = -1
-        course: Course = -1
+        section: Section = Errors.FAILED_TO_LOCATE
+        course: Course = Errors.FAILED_TO_LOCATE
 
         for c in courses:
             if c.subject_code != dept:
