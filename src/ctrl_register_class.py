@@ -2,6 +2,7 @@ from Entities.Course import Course, Section, course_search
 from Entities.User import User
 from Entities.Errors import Errors
 
+from ctrl_login import ctrl_Login
 from ctrl_view_courses import ctrl_View_Courses
 
 from typing import List
@@ -31,9 +32,9 @@ class ctrl_Student_Register_Class:
 			elif res == Errors.FAILED_TO_LOCATE:
 				print("Failed to locate Section")
 
-			ctrl_View_Courses.view(courses)
+			ctrl_View_Courses.view_courses(courses)
 			query = input("Enter the section name (ex. CSC-1710-01): ")
-			res = ctrl_Student_Register.__query_runner(courses, user, query)
+			res = ctrl_Student_Register_Class.__query_runner(courses, user, query)
 		
 		print("\n\nSuccessfully Registered for class!")
 

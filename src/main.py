@@ -39,13 +39,13 @@ def main():
         print("6. Edit Personal Information")
         selection = int(input("Enter a selection: "))
         if selection == 1:
-            ctrl_View_Courses.view(courses)
+            ctrl_View_Courses.view_courses(courses)
         elif selection == 2:
-            ctrl_Student_Register_Class(courses,current_user)
+            ctrl_Student_Register_Class.register_class(courses,current_user)
         elif selection == 3:
             current_user.print_sections()
         elif selection == 4:
-            ctrl_Admin_View_Students.view(users)
+            ctrl_Admin_View_Students.view_students(users)
         elif selection == 5:
             ctrl_Logout.Logout(current_user)
             break

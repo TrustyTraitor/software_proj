@@ -17,6 +17,42 @@ class User:
         # __ means this variable is private
         self.__sections = []
 
+    def set_id(self, id):
+        self.id = id
+
+    def get_id(self):
+        return self.id
+
+    def set_first_name(self, fn):
+        self.first_name = fn
+
+    def get_first_name(self):
+        return self.first_name
+
+    def set_last_name(self, ln):
+        self.last_name = ln
+
+    def get_last_name(self):
+        return self.last_name
+
+    def set_ssn(self, ssn):
+        self.ssn = ssn
+
+    def get_ssn(self):
+        return self.ssn
+
+    def set_password(self, pw):
+        self.password = pw
+
+    def get_password(self):
+        return self.password
+
+    def set_utype(self, ut):
+        self.u_type = ut
+
+    def get_utype(self):
+        return self.u_type
+
     def add_section(self, course, section) -> None:
         """
                 Requires a Course object and Section object
@@ -48,11 +84,6 @@ class User:
         print(
             f'Id: {self.id}\nName: {self.first_name} {self.last_name}\nPermission Level: {self.u_type}'
         )
-
-    def print_registered_sections(self) -> None:
-        for c in self.__sections:
-            print(
-                f'{c[0].subject_code}-{c[0].course_number}-{c[1].section}')
 
 
 """

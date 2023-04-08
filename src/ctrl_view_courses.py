@@ -6,7 +6,7 @@ from typing import List
 
 
 class ctrl_View_Courses:
-    def view(courses: List[Course]):
+    def view_courses(courses: List[Course]):
     	print_all_courses(courses)
 
 
