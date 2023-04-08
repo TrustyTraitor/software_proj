@@ -1,6 +1,7 @@
 from Entities.User import User
+from Entities.Errors import Errors
 
 class ctrl_Logout:	
 	def Logout(u: User):
 		print(f'Goodbye, {u.first_name} {u.last_name}!')
-		return 0
+		return Errors.SUCCESS
