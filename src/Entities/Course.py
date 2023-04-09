@@ -20,13 +20,6 @@ class Course:
 
         self.sections = []
 
-    def print(self) -> None:
-        """
-        Prints subject code and course number
-        """
-        print(f'\n{self.title}')
-        print(f'{self.subject_code}-{self.course_number}-', end='')
-
     def generate_student_registration_report(self) -> List[str]:
         """
         Generates a list of strings containing the registration information of students
@@ -101,11 +94,13 @@ class Section:
         self.professor = faculty
         return Errors.SUCCESS
 
-    def print(self) -> None:
+    def print(self, course: Course) -> None:
         """
         Run Course.print() before running this or output will look goofy
         """
-        print(f'{self.section}')
+        print(f'\n{course.title}')
+        print(f'{course.subject_code}-{course.course_number}-{self.section}')
+        print(f'{course.description}')
         print(f'\t{self.building}, {self.room}')
         print(f'\t{self.days} {self.start_time} - {self.end_time}')
         print(f'\t{self.professor}')
@@ -154,8 +149,7 @@ def print_all_courses(courses: List[Course]) -> None:
     """
     for c in courses:
         for s in c.sections:
-            c.print()
-            s.print()
+            s.print(c)
 
 
 def section_search(courses: List[Course], query: str) -> Tuple[Course, Section]:

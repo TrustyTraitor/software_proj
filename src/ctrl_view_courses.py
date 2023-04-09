@@ -7,7 +7,7 @@ from typing import List
 
 class ctrl_View_Courses:
     def view_courses(courses: List[Course]):
-    	print_all_courses(courses)
+        print_all_courses(courses)
 
 
 if __name__ == '__main__':
