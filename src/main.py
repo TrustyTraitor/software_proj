@@ -30,29 +30,63 @@ def main():
 
     selection = 0
     while True:
-        print("\n\n\n")
-        print("1. View Courses")
-        print("2. Register for course")
-        print("3. View Registered Classes")
-        print("4. View Students")
-        print("5. Logout")
-        print("6. Edit Personal Information")
-        selection = int(input("Enter a selection: "))
-        if selection == 1:
-            ctrl_View_Courses.view_courses(courses)
-        elif selection == 2:
-            ctrl_Student_Register_Class.register_class(courses,current_user)
-        elif selection == 3:
-            current_user.print_sections()
-        elif selection == 4:
-            ctrl_Admin_View_Students.view_students(users)
-        elif selection == 5:
-            ctrl_Logout.Logout(current_user)
-            break
-        elif selection == 6:
-            ctrl_Edit_Personal_Information.pickEdit(current_user)
-        selection = 0
+        if current_user.u_type == 'admin':
+            print("\n\n\n")
+            print("1. View All Courses")
+            print("2. View All Students")
+            print("3. Logout")
+            print("4. Edit Personal Information")
+            selection = int(input("Enter a selection: "))
+            if selection == 1:
+                ctrl_View_Courses.view_courses(courses)
+            elif selection == 2:
+                ctrl_Admin_View_Students.view_students(users)
+            elif selection == 3:
+                ctrl_Logout.Logout(current_user)
+                break
+            elif selection == 4:
+                ctrl_Edit_Personal_Information.pickEdit(current_user)
+            selection = 0
+            
+        elif current_user.u_type == 'student':
+            print("\n\n\n")
+            print("1. View All Courses")
+            print("2. Register for course")
+            print("3. View Registered Classes")
+            print("4. Logout")
+            print("5. Edit Personal Information")
+            selection = int(input("Enter a selection: "))
+            if selection == 1:
+                ctrl_View_Courses.view_courses(courses)
+            elif selection == 2:
+                ctrl_Student_Register_Class.register_class(courses,current_user)
+            elif selection == 3:
+                current_user.print_sections()
+            elif selection == 4:
+                ctrl_Logout.Logout(current_user)
+                break
+            elif selection == 5:
+                ctrl_Edit_Personal_Information.pickEdit(current_user)
+            selection = 0
 
+        elif current_user.u_type == 'faculty':
+            print("\n\n\n")
+            print("1. View All Courses")
+            print("2. View All Students")
+            print("3. Logout")
+            print("4. Edit Personal Information")
+            print("5. View Sections Teaching")
+            selection = int(input("Enter a selection: "))
+            if selection == 1:
+                ctrl_View_Courses.view_courses(courses)
+            elif selection == 2:
+                ctrl_Admin_View_Students.view_students(users)
+            elif selection == 3:
+                ctrl_Logout.Logout(current_user)
+                break
+            elif selection == 4:
+                ctrl_Edit_Personal_Information.pickEdit(current_user)
+            selection = 0
 
 if __name__ == '__main__':
     main()
