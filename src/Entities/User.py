@@ -85,7 +85,15 @@ class User:
             f'Id: {self.id}\nName: {self.first_name} {self.last_name}\nPermission Level: {self.u_type}'
         )
 
-
+    def admin_delete_user(users: List['User'], user_id: int) -> bool:
+        """
+        Removes a user from the system based on their id
+        """
+        for i, user in enumerate(users):
+            if user.id == user_id:
+                users.pop(i)
+                return True
+        return False
 """
 Helper functions not part of User class
 """

@@ -32,11 +32,11 @@ class ctrl_Edit_Personal_Information:
             return Errors.SUCCESS
 
     def EditLastName(u: User):
-        u.last_name = input("Enter new last name: ").capitalize()
+        u.set_last_name(input("Enter new last name: ").capitalize())
         return Errors.SUCCESS
 
     def EditFirstName(u: User):
-        u.first_name = (input("Enter new first name: ").capitalize())
+        u.set_first_name(input("Enter new first name: ").capitalize())
         return Errors.SUCCESS
 
     def EditPassword(u: User):
@@ -45,7 +45,7 @@ class ctrl_Edit_Personal_Information:
             newPasswordFirst = input("Enter new password: ")
             newPasswordSecond = input("Please confirm your new password: ")
             if newPasswordFirst == newPasswordSecond:
-                u.password = newPasswordFirst
+                u.set_password(newPasswordFirst)
                 return Errors.SUCCESS
             else:
                 return Errors.MISMATCHED_PASSWORDS
