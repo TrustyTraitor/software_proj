@@ -1,5 +1,5 @@
 from Entities.Errors import Errors
-
+from Entities.User import User
 from typing import List, Tuple, Dict
 import json
 
@@ -103,7 +103,7 @@ class Section:
         print(f'{course.description}')
         print(f'\t{self.building}, {self.room}')
         print(f'\t{self.days} {self.start_time} - {self.end_time}')
-        print(f'\t{self.professor}')
+        print(f'\t{self.professor.first_name} {self.professor.last_name}')
         print(f'\tBooks:{self.books}')
         print(f'\tMaterials:{self.materials}')
 
@@ -150,6 +150,17 @@ def print_all_courses(courses: List[Course]) -> None:
     for c in courses:
         for s in c.sections:
             s.print(c)
+
+def print_all_courses_teaching(prof: User, courses: List[Course]) -> None:
+    """
+        Prints all sections and some of their information
+    """
+    i = 1
+    for c in courses:
+        for s in c.sections:
+            if s.professor == prof:
+                print(f'{i}. {c.subject_code}-{c.course_number}-{s.section}')
+                i += 1
 
 
 def section_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
