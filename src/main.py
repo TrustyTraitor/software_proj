@@ -12,6 +12,7 @@ from ctrl_register_class import ctrl_Student_Register_Class
 from ctrl_view_sections_teaching import ctrl_View_Sections_Teaching
 from ctrl_admin_assign_faculty import ctrl_Admin_Assign_Faculty
 from ctrl_faculty_view_course_information import ctrl_Faculty_View_Course_Information
+from ctrl_faculty_request_drop_student import ctrl_Faculty_Request_Drop_Student
 
 # stdlib imports
 from typing import List
@@ -30,7 +31,11 @@ def main():
         current_user = ctrl_Login.Login(users, id, password)
 
     print(f'Welcome {current_user.first_name.capitalize()}!')
+
+    #for testing 
     courses[0].sections[0].assign_faculty(current_user)
+    courses[0].sections[0].add_student(users[1])
+
     selection = 0
     while True:
         if current_user.u_type == 'admin':
@@ -80,6 +85,7 @@ def main():
             print("4. Edit Personal Information")
             print("5. View Sections Teaching")
             print("6. View Course Information")
+            print("7. Request to drop a student")
             selection = int(input("Enter a selection: "))
             if selection == 1:
                 ctrl_View_Courses.view_courses(courses)
@@ -94,8 +100,10 @@ def main():
                 ctrl_View_Sections_Teaching.view_courses(current_user, courses)
             elif selection == 6:
                 ctrl_Faculty_View_Course_Information.view_information(current_user, courses)
-            selection = 0
+            elif selection == 7:
+                ctrl_Faculty_Request_Drop_Student.view_students(current_user, courses)
 
+            selection = 0
 
 if __name__ == '__main__':
     main()
