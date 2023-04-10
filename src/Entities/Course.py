@@ -84,11 +84,11 @@ class Section:
         self.professor = ""
         return Errors.SUCCESS
         
-    def assign_faculty(self, faculty: str) -> Errors:
+    def assign_faculty(self, faculty) -> Errors:
         """
         Assigns a faculty to a section in the course
         """
-        if self.professor != "":
+        if self.professor:
             return Errors.ALREADY_ASSIGNED
         
         self.professor = faculty
