@@ -107,6 +107,9 @@ class Section:
         print(f'\tBooks:{self.books}')
         print(f'\tMaterials:{self.materials}')
 
+    def get_student(self, student: int) -> User:
+        return(self._Section__students[student])
+
 
 """
 These are all helper functions that are not part of either class
@@ -151,7 +154,7 @@ def print_all_courses(courses: List[Course]) -> None:
         for s in c.sections:
             s.print(c)
 
-def print_all_courses_teaching(prof: User, courses: List[Course]) -> None:
+def print_all_sections_teaching(prof: User, courses: List[Course]) -> None:
     """
         Prints all sections and some of their information
     """
@@ -161,6 +164,22 @@ def print_all_courses_teaching(prof: User, courses: List[Course]) -> None:
             if s.professor == prof:
                 print(f'{i}. {c.subject_code}-{c.course_number}-{s.section}')
                 i += 1
+
+def print_students_in_sections_teaching(prof: User, courses: List[Course]) -> None:
+    """
+        Prints all sections and some of their information
+    """
+    i = 1
+    j = 1
+    for c in courses:
+        for s in c.sections:
+            if s.professor == prof:
+                print(f'{i}. {c.subject_code}-{c.course_number}-{s.section}')
+                for student in s._Section__students:
+                    print(f'\t{j}. {student.first_name} {student.last_name}')
+                    j += 1
+                i += 1
+
 
 
 def section_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
