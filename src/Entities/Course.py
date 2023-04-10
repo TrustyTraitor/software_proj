@@ -39,14 +39,14 @@ class Section:
     """
 
     def __init__(self,
-                 section: str, prof: str, seats: int,
+                 section: str, seats: int,
                  building: str, room: str,
                  days: str, start_time: str, end_time: str,
                  books: List[str], materials: List[str]):
         # Section Number
         self.section: str = section
 
-        self.professor: str = prof
+        self.professor = {}
         self.available_seats: int = seats
 
         self.building: str = building
@@ -133,7 +133,7 @@ def load_courses() -> List[Course]:
                 section = data[subj][code]["Sections"][sect]
 
                 courses[idx].sections.append(
-                    Section(sect, section["Professor"], section["Seats"],
+                    Section(sect, section["Seats"],
                             section["Building"], section["Room"],
                             section["MeetingDays"], section["StartTime"], section["EndTime"],
                             section["Books"], section["Materials"]
