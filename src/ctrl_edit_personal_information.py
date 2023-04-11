@@ -1,5 +1,5 @@
 from Entities.User import User
-from Entities.Errors import Errors
+from Errors.Errors import Errors
 
 
 class ctrl_Edit_Personal_Information:

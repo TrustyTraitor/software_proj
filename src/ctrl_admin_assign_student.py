@@ -1,6 +1,6 @@
 from Entities.Course import Course, Section, section_search
 from Entities.User import User
-from Entities.Errors import Errors
+from Errors.Errors import Errors
 
 from typing import List
 

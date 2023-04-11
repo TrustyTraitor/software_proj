@@ -1,6 +1,6 @@
 from typing import List
 from Entities.Course import Course, Section, section_search
-from Entities.Errors import Errors
+from Errors.Errors import Errors
 
 class ctrl_Admin_Remove_Faculty:
     def remove_faculty(courses: List[Course], section_name: str) -> None:
