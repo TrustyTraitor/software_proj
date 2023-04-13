@@ -94,6 +94,15 @@ class User:
                 users.pop(i)
                 return True
         return False
+
+    def admin_view_accounts(self):
+        """
+        Prints out a user's id, name, SSN, and permission level
+        """
+        print(
+            f'Id: {self.id}\nName: {self.first_name} {self.last_name}\nSSN: {self.ssn}\nPermission Level: {self.u_type}'
+        )
+
 """
 Helper functions not part of User class
 """
