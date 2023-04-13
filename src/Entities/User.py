@@ -94,14 +94,26 @@ class User:
                 users.pop(i)
                 return True
         return False
+    
+    from typing import List
+from Entities.User import User
 
-    def admin_view_accounts(self):
-        """
-        Prints out a user's id, name, SSN, and permission level
-        """
-        print(
-            f'Id: {self.id}\nName: {self.first_name} {self.last_name}\nSSN: {self.ssn}\nPermission Level: {self.u_type}'
-        )
+def admin_view_accounts(self, users: List[User], user_id: int):
+    """
+    Prints out a specific user's id, name, SSN, and permission level
+    """
+    if self.u_type != "Admin":
+        print("You do not have permission to view user accounts.")
+        return
+
+    for user in users:
+        if user.id == user_id:
+            print(
+                f'Id: {user.id}\nName: {user.first_name} {user.last_name}\nSSN: {user.ssn}\nPermission Level: {user.u_type}'
+            )
+            return
+
+    print("User not found.")
 
 """
 Helper functions not part of User class
