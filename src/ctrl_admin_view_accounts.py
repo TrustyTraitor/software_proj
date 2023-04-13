@@ -1,7 +1,7 @@
 from typing import List
 from Entities.User import User
 
-class ctrl_admin_view_accounts:
+class ctrl_Admin_View_Accounts:
     def view_user(cls, users: List[User], user_id: int):
         """
         Prints out a specific user's id, name, SSN, and permission level
