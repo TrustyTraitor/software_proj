@@ -13,7 +13,7 @@ class ctrl_Student_Register_Class:
 		"""
 			Returns different values based on the Errors enum
 		"""
-		cour, sect = course_search(courses, query)
+		cour, sect = section_search(courses, query)
 
 		if sect == Errors.FAILED_TO_LOCATE:
 			return Errors.FAILED_TO_LOCATE
