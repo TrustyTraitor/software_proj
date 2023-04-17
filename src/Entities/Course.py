@@ -3,6 +3,7 @@ from Entities.User import User
 from typing import List, Tuple, Dict
 import json
 
+import Entities.User
 
 class Course:
     """
@@ -103,7 +104,10 @@ class Section:
         print(f'{course.description}')
         print(f'\t{self.building}, {self.room}')
         print(f'\t{self.days} {self.start_time} - {self.end_time}')
-        print(f'\t{self.professor.first_name} {self.professor.last_name}')
+        if type(self.professor) == Entities.User:
+            print(f'\t{self.professor.first_name} {self.professor.last_name}')
+        else:
+            print("\tNo Professor Assigned")
         print(f'\tBooks:{self.books}')
         print(f'\tMaterials:{self.materials}')
 
