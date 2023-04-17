@@ -15,6 +15,7 @@ from ctrl_faculty_view_course_information import ctrl_Faculty_View_Course_Inform
 from ctrl_faculty_request_drop_student import ctrl_Faculty_Request_Drop_Student
 from ctrl_admin_update_user_account import ctrl_Edit_User_Account
 from ctrl_admin_create_user import ctrl_Create_User_Account
+from ctrl_admin_update_system_settings import ctrl_Update_System_Settings
 # stdlib imports
 from typing import List
 
@@ -22,6 +23,7 @@ def main():
     # init lists that will be passed to functions later
     users: List[User] = []  # This is the list of all users
     courses: List[Course] = []  # this is the list of all courses
+    enrollmentAvailable = True
 
     users = load_users()
     courses = load_courses()
@@ -47,6 +49,7 @@ def main():
             print("4. Edit Personal Information")
             print("5. Update User Account")
             print("6. Create User Account")
+            print("7. Update System Settings")
             selection = int(input("Enter a selection: "))
             if selection == 1:
                 ctrl_View_Courses.view_courses(courses)
@@ -61,6 +64,8 @@ def main():
                 ctrl_Edit_User_Account.pickUserToEdit(users)
             elif selection == 6:
                 ctrl_Create_User_Account.createUserAccount(users)
+            elif selection == 7:
+                ctrl_Update_System_Settings.updateSystemSettings(enrollmentAvailable)
             selection = 0
             
         elif current_user.u_type == 'student':
