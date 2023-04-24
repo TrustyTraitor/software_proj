@@ -32,6 +32,17 @@ class Course:
                 report.append(f'\t{student.name} ({student.student_id})')
         return report
 
+    def faculty_add_materials(self, faculty: User, course_code: str, section_number: str, new_material: str) -> Errors:
+        if self.subject_code + '-' + self.course_number == course_code:
+            for section in self.sections:
+                if section.section == section_number:
+                    if section.professor == faculty:
+                        section.add_material(new_material)
+                        return Errors.SUCCESS
+                    else:
+                        return Errors.NOT_AUTHORIZED
+        return Errors.FAILED_TO_LOCATE
+
 
 class Section:
     """
