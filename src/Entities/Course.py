@@ -74,6 +74,14 @@ class Section:
             return Errors.SUCCESS
         else:
             return Errors.SECTION_FULL
+    
+    def remove_student(self, student) -> Errors:
+        try: 
+            self.__students.remove(student)
+            self.available_seats += 1
+            return Errors.SUCCESS
+        except:
+            return Errors.FAILED_TO_LOCATE
 
     def remove_faculty(self) -> Errors:
         """
@@ -195,7 +203,7 @@ def section_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
 
         returns a tuple of (course,section) if found or (Errors.FAILED_TO_LOCATE, Errors.FAILED_TO_LOCATE)
     """
-    while True:
+    while True: # tbh idk why this is here but im scared to remove it so
 
         dept, code, sect = query.upper().split('-')
         section: Section = Errors.FAILED_TO_LOCATE

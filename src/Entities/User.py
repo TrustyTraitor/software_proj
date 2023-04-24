@@ -1,4 +1,5 @@
 from typing import List, Tuple
+from Errors.Errors import Errors
 
 import json
 
@@ -70,12 +71,17 @@ class User:
         """
         return self.__sections
 
+    def remove_section(self, course, sect):
+        try:
+            self.__sections.remove((course,sect))
+        except:
+            return Errors.FAILED_TO_LOCATE
+
     def print_sections(self):
         abc = self.get_sections()
         for a in abc:
             c, s = a
-            c.print()
-            s.print()
+            s.print(c)
 
     def print(self) -> None:
         """

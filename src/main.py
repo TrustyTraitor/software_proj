@@ -6,6 +6,7 @@ from Entities.User import User, load_users
 from ctrl_login import ctrl_Login
 from ctrl_logout import ctrl_Logout
 from ctrl_edit_personal_information import ctrl_Edit_Personal_Information
+from ctrl_student_view_schedule import ctrl_student_view_schedule
 from ctrl_view_students import ctrl_Admin_View_Students
 from ctrl_view_courses import ctrl_View_Courses
 from ctrl_register_class import ctrl_Student_Register_Class
@@ -16,6 +17,7 @@ from ctrl_faculty_request_drop_student import ctrl_Faculty_Request_Drop_Student
 from ctrl_admin_update_user_account import ctrl_Edit_User_Account
 from ctrl_admin_create_user import ctrl_Create_User_Account
 from ctrl_admin_update_system_settings import ctrl_Update_System_Settings
+from ctrl_student_drop_course import ctrl_student_drop_course
 # stdlib imports
 from typing import List
 
@@ -75,6 +77,8 @@ def main():
             print("3. View Registered Classes")
             print("4. Logout")
             print("5. Edit Personal Information")
+            print("6. Drop Course")
+            print("7. View Schedule")
             selection = int(input("Enter a selection: "))
             if selection == 1:
                 ctrl_View_Courses.view_courses(courses)
@@ -87,6 +91,10 @@ def main():
                 break
             elif selection == 5:
                 ctrl_Edit_Personal_Information.pickEdit(current_user)
+            elif selection == 6:
+                ctrl_student_drop_course.drop_course(courses,current_user)
+            elif selection == 7:
+                ctrl_student_view_schedule.view_schedule(current_user)
             selection = 0
 
         elif current_user.u_type == 'faculty':
