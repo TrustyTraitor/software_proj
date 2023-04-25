@@ -11,7 +11,7 @@
           "EndTime": "10:25 AM",
           "Room": "130",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 7,
           "Books": [],
           "Materials": []
         },
@@ -22,7 +22,7 @@
           "EndTime": "11:50 AM",
           "Room": "130",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 7,
           "Books": [],
           "Materials": []
         }
@@ -39,7 +39,7 @@
           "EndTime": "1:45 PM",
           "Room": "139/140",
           "Building": "Couch Hall",
-          "Professor": "Williams, L",
+          "Professor": 6,
           "Books": [],
           "Materials": []
         }
@@ -56,7 +56,7 @@
           "EndTime": "10:25 AM",
           "Room": "147",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 7,
           "Books": [],
           "Materials": []
         },
@@ -67,7 +67,7 @@
           "EndTime": "11:50 AM",
           "Room": "147",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 7,
           "Books": [],
           "Materials": []
         },
@@ -78,7 +78,7 @@
           "EndTime": "3:10 PM",
           "Room": "147",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 7,
           "Books": [],
           "Materials": []
         },
@@ -89,7 +89,7 @@
           "EndTime": "4:35 PM",
           "Room": "147",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 7,
           "Books": [],
           "Materials": []
         }
@@ -106,7 +106,7 @@
           "EndTime": "1:45 PM",
           "Room": "147",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 9,
           "Books": [],
           "Materials": []
         }
@@ -123,7 +123,7 @@
           "EndTime": "9:00 AM",
           "Room": "147",
           "Building": "Couch Hall",
-          "Professor": "Titus, K",
+          "Professor": 7,
           "Books": [],
           "Materials": []
         }
@@ -140,7 +140,7 @@
           "EndTime": "9:30 AM",
           "Room": "139/140",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 10,
           "Books": [],
           "Materials": []
         }
@@ -157,7 +157,7 @@
           "EndTime": "10:25 AM",
           "Room": "139/140",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 8,
           "Books": [],
           "Materials": []
         }
@@ -174,7 +174,7 @@
           "EndTime": "9:00 AM",
           "Room": "139/140",
           "Building": "Couch Hall",
-          "Professor": "Wei, Y",
+          "Professor": 8,
           "Books": [],
           "Materials": []
         }
@@ -191,7 +191,7 @@
           "EndTime": "4:35 PM",
           "Room": "139/140",
           "Building": "Couch Hall",
-          "Professor": "Williams, L",
+          "Professor": 6,
           "Books": [],
           "Materials": []
         }
@@ -208,7 +208,7 @@
           "EndTime": "1:20 PM",
           "Room": "139/140",
           "Building": "Couch Hall",
-          "Professor": "Williams, L",
+          "Professor": 6,
           "Books": [],
           "Materials": []
         }
@@ -225,7 +225,7 @@
           "EndTime": "1:45 PM",
           "Room": "130",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 9,
           "Books": [],
           "Materials": []
         }
@@ -242,7 +242,7 @@
           "EndTime": "9:30 AM",
           "Room": "130",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 9,
           "Books": [],
           "Materials": []
         }
@@ -259,7 +259,7 @@
           "EndTime": "3:15 PM",
           "Room": "130",
           "Building": "Couch Hall",
-          "Professor": "No Professor",
+          "Professor": 9,
           "Books": [],
           "Materials": []
         }
@@ -276,7 +276,7 @@
           "EndTime": "4:35 PM",
           "Room": "130",
           "Building": "Couch Hall",
-          "Professor": "Shore, R",
+          "Professor": 9,
           "Books": [],
           "Materials": []
         }
@@ -293,7 +293,7 @@
           "EndTime": "No Time",
           "Room": "No Room",
           "Building": "No Building",
-          "Professor": "No Professor",
+          "Professor": 7,
           "Books": [],
           "Materials": []
         }
@@ -310,7 +310,7 @@
           "EndTime": "No Time",
           "Room": "No Room",
           "Building": "No Building",
-          "Professor": "No Professor",
+          "Professor": 8,
           "Books": [],
           "Materials": []
         }
@@ -327,7 +327,7 @@
           "EndTime": "No Time",
           "Room": "No Room",
           "Building": "No Building",
-          "Professor": "No Professor",
+          "Professor": 8,
           "Books": [],
           "Materials": []
         }

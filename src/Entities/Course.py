@@ -104,7 +104,7 @@ class Section:
         self.professor = ""
         return Errors.SUCCESS
         
-    def assign_faculty(self, faculty) -> Errors:
+    def assign_faculty(self, faculty: User) -> Errors:
         """
         Assigns a faculty to a section in the course
         """
@@ -138,7 +138,7 @@ class Section:
 These are all helper functions that are not part of either class
 """
 
-def load_courses() -> List[Course]:
+def load_courses(users: List[User]) -> List[Course]:
     """
     This will read courses from the data/courses.json\n
     returns a list of courses \n
@@ -154,17 +154,28 @@ def load_courses() -> List[Course]:
             title = data[subj][code]["title"]
             desc = data[subj][code]["description"]
 
-            courses.append(Course(subj, code, title, desc))
+            course = Course(subj, code, title, desc)
+            courses.append(course)
             for sect in data[subj][code]["Sections"]:
                 section = data[subj][code]["Sections"][sect]
+                professor_id = str(section["Professor"])
 
-                courses[idx].sections.append(
-                    Section(sect, section["Seats"],
+                temp = Section(sect, section["Seats"],
                             section["Building"], section["Room"],
                             section["MeetingDays"], section["StartTime"], section["EndTime"],
                             section["Books"], section["Materials"]
                             )
-                )
+                
+                professor: User = {}
+                for acc in users:
+                    if acc.get_id() == professor_id:
+                        professor = acc
+                        professor.add_section(course,temp)
+                        break
+
+                temp.assign_faculty(professor)
+
+                courses[idx].sections.append(temp)
 
     return courses
 

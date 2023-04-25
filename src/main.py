@@ -40,7 +40,7 @@ def main():
     enrollmentAvailable = True
 
     users = load_users()
-    courses = load_courses()
+    courses = load_courses(users)
 
     current_user = 0
     while not current_user:
@@ -50,8 +50,8 @@ def main():
     print(f'Welcome {current_user.first_name.capitalize()}!')
 
     #for testing 
-    courses[0].sections[0].assign_faculty(current_user)
-    courses[0].sections[0].add_student(users[1])
+    # courses[0].sections[0].assign_faculty(current_user)
+    # courses[0].sections[0].add_student(users[1])
 
     selection = 0
     while True:
