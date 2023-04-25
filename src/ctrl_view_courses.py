@@ -1,13 +1,13 @@
-from classes.Course import Course
-from classes.Course import print_all_courses
+from Entities.Course import Course
+from Entities.Course import print_all_courses
 
 import json
 from typing import List
 
 
 class ctrl_View_Courses:
-    def view(courses: List[Course]):
-    	print_all_courses(courses)
+    def view_courses(courses: List[Course]):
+        print_all_courses(courses)
 
 
 if __name__ == '__main__':

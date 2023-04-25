@@ -1,4 +1,5 @@
 from typing import List, Tuple
+from Errors.Errors import Errors
 
 import json
 
@@ -17,6 +18,42 @@ class User:
         # __ means this variable is private
         self.__sections = []
 
+    def set_id(self, id):
+        self.id = id
+
+    def get_id(self):
+        return self.id
+
+    def set_first_name(self, fn):
+        self.first_name = fn
+
+    def get_first_name(self):
+        return self.first_name
+
+    def set_last_name(self, ln):
+        self.last_name = ln
+
+    def get_last_name(self):
+        return self.last_name
+
+    def set_ssn(self, ssn):
+        self.ssn = ssn
+
+    def get_ssn(self):
+        return self.ssn
+
+    def set_password(self, pw):
+        self.password = pw
+
+    def get_password(self):
+        return self.password
+
+    def set_utype(self, ut):
+        self.u_type = ut
+
+    def get_utype(self):
+        return self.u_type
+
     def add_section(self, course, section) -> None:
         """
                 Requires a Course object and Section object
@@ -34,12 +71,17 @@ class User:
         """
         return self.__sections
 
+    def remove_section(self, course, sect):
+        try:
+            self.__sections.remove((course,sect))
+        except:
+            return Errors.FAILED_TO_LOCATE
+
     def print_sections(self):
         abc = self.get_sections()
         for a in abc:
             c, s = a
-            c.print()
-            s.print()
+            s.print(c)
 
     def print(self) -> None:
         """
@@ -49,11 +91,35 @@ class User:
             f'Id: {self.id}\nName: {self.first_name} {self.last_name}\nPermission Level: {self.u_type}'
         )
 
-    def print_registered_sections(self) -> None:
-        for c in self.__sections:
-            print(
-                f'{c[0].subject_code}-{c[0].course_number}-{c[1].section}')
+    def admin_delete_user(users: List['User'], user_id: int) -> bool:
+        """
+        Removes a user from the system based on their id
+        """
+        for i, user in enumerate(users):
+            if user.id == user_id:
+                users.pop(i)
+                return True
+        return False
+    
+    from typing import List
+from Entities.User import User
 
+def admin_view_accounts(self, users: List[User], user_id: int):
+    """
+    Prints out a specific user's id, name, SSN, and permission level
+    """
+    if self.u_type != "Admin":
+        print("You do not have permission to view user accounts.")
+        return
+
+    for user in users:
+        if user.id == user_id:
+            print(
+                f'Id: {user.id}\nName: {user.first_name} {user.last_name}\nSSN: {user.ssn}\nPermission Level: {user.u_type}'
+            )
+            return
+
+    print("User not found.")
 
 """
 Helper functions not part of User class
