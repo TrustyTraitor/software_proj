@@ -18,6 +18,18 @@ from ctrl_admin_update_user_account import ctrl_Edit_User_Account
 from ctrl_admin_create_user import ctrl_Create_User_Account
 from ctrl_admin_update_system_settings import ctrl_Update_System_Settings
 from ctrl_student_drop_course import ctrl_student_drop_course
+from ctrl_admin_remove_course import ctrl_Admin_Remove_Course
+from ctrl_admin_remove_student import ctrl_Admin_Remove_Student
+from ctrl_admin_remove_faculty import ctrl_Admin_Remove_Faculty
+from ctrl_admin_delete_user import ctrl_Admin_Delete_User
+from ctrl_admin_assign_student import ctrl_Admin_Assign_Student
+from ctrl_admin_generate_regestration_report import ctrl_Admin_Generate_Registration_Report
+from ctrl_admin_add_course import ctrl_Admin_Add_Course
+from ctrl_admin_view_accounts import ctrl_Admin_View_Accounts
+
+
+
+
 # stdlib imports
 from typing import List
 
@@ -52,6 +64,16 @@ def main():
             print("5. Update User Account")
             print("6. Create User Account")
             print("7. Update System Settings")
+            print("8. Remove Course")
+            print("9. Remove Student from Course")
+            print("10. Remove Faculty from Course")
+            print("11. Delete User Account")
+            print("12. Assign Faculty to Course")
+            print("13. Generate Registration Report")
+            print("14. Add Course")
+            print("15. Assign Student to Course")
+            print("16. View All Accounts")
+            
             selection = int(input("Enter a selection: "))
             if selection == 1:
                 ctrl_View_Courses.view_courses(courses)
@@ -68,6 +90,25 @@ def main():
                 ctrl_Create_User_Account.createUserAccount(users)
             elif selection == 7:
                 ctrl_Update_System_Settings.updateSystemSettings(enrollmentAvailable)
+            elif selection == 8:
+                ctrl_Admin_Remove_Course.remove_course(courses)
+            elif selection == 9:
+                ctrl_Admin_Remove_Student.remove_student(users)
+            elif selection == 10:
+                ctrl_Admin_Remove_Faculty.remove_faculty(users)
+            elif selection == 11:
+                ctrl_Admin_Delete_User.delete_user(users)
+            elif selection == 12:
+                ctrl_Admin_Assign_Faculty.assign_faculty(courses,users)
+            elif selection == 13:
+                ctrl_Admin_Generate_Registration_Report.generate_registration_report(courses)
+            elif selection == 14:
+                ctrl_Admin_Add_Course.add_course(courses)
+            elif selection == 15:
+                ctrl_Admin_Assign_Student.assign_student(courses,users)
+            elif selection == 16:
+                ctrl_Admin_View_Accounts.view_user(users)
+
             selection = 0
             
         elif current_user.u_type == 'student':
@@ -79,6 +120,7 @@ def main():
             print("5. Edit Personal Information")
             print("6. Drop Course")
             print("7. View Schedule")
+            
             selection = int(input("Enter a selection: "))
             if selection == 1:
                 ctrl_View_Courses.view_courses(courses)
@@ -106,6 +148,7 @@ def main():
             print("5. View Sections Teaching")
             print("6. View Course Information")
             print("7. Request to drop a student")
+            
             selection = int(input("Enter a selection: "))
             if selection == 1:
                 ctrl_View_Courses.view_courses(courses)
