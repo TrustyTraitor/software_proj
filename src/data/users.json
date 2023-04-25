@@ -46,5 +46,45 @@
         "SSN":"987-65-4321",
         "password": "4321",
         "type": "student"
+    },
+    {
+        "id": 6,
+        "first_name": "Lloyd",
+        "last_name": "Williams",
+        "SSN":"987-65-4321",
+        "password": "4321",
+        "type": "faculty"
+    },
+    {
+        "id": 7,
+        "first_name": "Kimberly",
+        "last_name": "Titus",
+        "SSN":"987-65-4321",
+        "password": "4321",
+        "type": "faculty"
+    },
+    {
+        "id": 8,
+        "first_name": "Yong",
+        "last_name": "Wei",
+        "SSN":"987-65-4321",
+        "password": "4321",
+        "type": "faculty"
+    },
+    {
+        "id": 9,
+        "first_name": "Roger",
+        "last_name": "Shore",
+        "SSN":"987-65-4321",
+        "password": "4321",
+        "type": "faculty"
+    },
+	{
+        "id": 10,
+        "first_name": "William",
+        "last_name": "Suchan",
+        "SSN":"987-65-4321",
+        "password": "4321",
+        "type": "faculty"
     }
 ]
