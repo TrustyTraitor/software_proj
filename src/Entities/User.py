@@ -132,7 +132,7 @@ def load_users() -> List[User]:
     """
     users: List[User] = []
 
-    with open("./data/users.json", 'r') as file:
+    with open("src/data/users.json", 'r') as file:
         data = json.load(file)
 
     for u in data:
