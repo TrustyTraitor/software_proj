@@ -1,16 +1,16 @@
 [
     {
         "id": 0,
-        "first_name": "jim",
-        "last_name": "smith",
+        "first_name": "Jim",
+        "last_name": "Smith",
         "SSN": "123-45-6789",
         "password": "1234",
         "type": "admin"
     },
     {
         "id": 1,
-        "first_name": "jom",
-        "last_name": "smith",
+        "first_name": "Jom",
+        "last_name": "Smith",
         "SSN":"987-65-4321",
         "password": "4321",
         "type": "student"
@@ -26,7 +26,7 @@
     {
         "id": 3,
         "first_name": "Laila",
-        "last_name": "guac",
+        "last_name": "Guac",
         "SSN":"987-65-4321",
         "password": "4321",
         "type": "student"
