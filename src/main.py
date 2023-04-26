@@ -41,6 +41,14 @@ def main():
 
     users = load_users()
     courses = load_courses(users)
+    
+	# adds every course/section to jom's schedule
+    for u in users:
+        if u.id == "1":
+            for c in courses:
+                for s in c.sections:
+                    u.add_section(c,s)
+                    s.add_student(u)
 
     current_user = 0
     while not current_user:
@@ -70,7 +78,7 @@ def main():
             print("11. Create User Account")
             print("12. Update User Account")
             print("13. Delete User Account")
-            print("14. Update System Settings")
+            # print("14. Update System Settings")
             print("15. Edit Personal Information")
             print("16. Logout")
             
@@ -88,11 +96,11 @@ def main():
             elif selection == 6:
                 ctrl_Admin_Assign_Faculty.assign_faculty(courses,users)
             elif selection == 7:
-                ctrl_Admin_Remove_Course.remove_course(courses)
+                ctrl_Admin_Remove_Course.remove_course(courses, users)
             elif selection == 8:
-                ctrl_Admin_Remove_Student.remove_student(users)
+                ctrl_Admin_Remove_Student.remove_student(current_user,courses, users)
             elif selection == 9:
-                ctrl_Admin_Remove_Faculty.remove_faculty(users)
+                ctrl_Admin_Remove_Faculty.remove_faculty(courses, users)
             elif selection == 10:
                 ctrl_Admin_Generate_Registration_Report.generate_registration_report(courses)
             elif selection == 11:
@@ -101,8 +109,8 @@ def main():
                 ctrl_Edit_User_Account.pickUserToEdit(users)
             elif selection == 13:
                 ctrl_Admin_Delete_User.delete_user(users)
-            elif selection == 14:
-                ctrl_Update_System_Settings.updateSystemSettings(enrollmentAvailable)
+            # elif selection == 14:
+            #     ctrl_Update_System_Settings.updateSystemSettings(enrollmentAvailable)
             elif selection == 15:
                 ctrl_Edit_Personal_Information.pickEdit(current_user)
             elif selection == 16:

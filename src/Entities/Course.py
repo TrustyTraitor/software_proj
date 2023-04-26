@@ -25,12 +25,10 @@ class Course:
         """
         Generates a list of strings containing the registration information of students
         """
-        report = []
         for section in self.sections:
-            report.append(f'Section {section.section}:')
-            for student in section._Section__students:
-                report.append(f'\t{student.name} ({student.student_id})')
-        return report
+            print(f'{self.subject_code}-{self.course_number}-{section.section}:')
+            for student in section.get_all_students():
+                print(f'\t{student.first_name} {student.last_name} ({student.id})')
 
     def faculty_add_materials(self, faculty: User, course_code: str, section_number: str, new_material: str) -> Errors:
         if self.subject_code + '-' + self.course_number == course_code:
@@ -57,6 +55,7 @@ class Section:
                  books: List[str], materials: List[str]):
         # Section Number
         self.section: str = section
+        self.parent_course: Course = {}
 
         self.professor = {}
         self.available_seats: int = seats
@@ -89,6 +88,7 @@ class Section:
     def remove_student(self, student) -> Errors:
         try: 
             self.__students.remove(student)
+            student.remove_section(self.parent_course,self)
             self.available_seats += 1
             return Errors.SUCCESS
         except:
@@ -98,6 +98,9 @@ class Section:
         """
         Removes faculty from a section in the course
         """
+        if type(self.professor) == User:
+            self.professor.remove_section(self.parent_course, self)
+
         if self.professor == "":
             return Errors.NONE_ASSIGNED
         
@@ -108,9 +111,6 @@ class Section:
         """
         Assigns a faculty to a section in the course
         """
-        if self.professor:
-            return Errors.ALREADY_ASSIGNED
-        
         self.professor = faculty
         return Errors.SUCCESS
 
@@ -132,6 +132,9 @@ class Section:
 
     def get_student(self, student: int) -> User:
         return(self._Section__students[student])
+
+    def get_all_students(self):
+        return self.__students
 
 
 """
@@ -166,6 +169,8 @@ def load_courses(users: List[User]) -> List[Course]:
                             section["Books"], section["Materials"]
                             )
                 
+                temp.parent_course = course
+
                 professor: User = {}
                 for acc in users:
                     if acc.get_id() == professor_id:
@@ -247,22 +252,22 @@ def section_search(courses: List[Course], query: str) -> Tuple[Course, Section]:
 
         return (course, section)
 
-def admin_add_course(roster: List[Course], subj_code: str, number: str, title: str, desc: str, sections: List[Section]) -> None:
-    """
-    Adds a new course to the roster
-    """
-    course = Course(subj_code, number, title, desc)
-    for section in sections:
-        course.add_section(section)
-    roster.append(course)
+# def admin_add_course(roster: List[Course], subj_code: str, number: str, title: str, desc: str, sections: List[Section]) -> None:
+#     """
+#     Adds a new course to the roster
+#     """
+#     course = Course(subj_code, number, title, desc)
+#     for section in sections:
+#         course.add_section(section)
+#     roster.append(course)
 
-def admin_remove_course(roster: List[Course], subj_code: str, number: str) -> bool:
-    """
-    Removes a course from the roster based on subject code and course number
-    """
-    for i, course in enumerate(roster):
-        if course.subject_code == subj_code and course.course_number == number:
-            roster.pop(i)
-            return True
-    return False
+# def admin_remove_course(roster: List[Course], subj_code: str, number: str) -> bool:
+#     """
+#     Removes a course from the roster based on subject code and course number
+#     """
+#     for i, course in enumerate(roster):
+#         if course.subject_code == subj_code and course.course_number == number:
+#             roster.pop(i)
+#             return True
+#     return False
 

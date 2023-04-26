@@ -15,7 +15,8 @@ class ctrl_student_drop_course:
 			return Errors.FAILED_TO_LOCATE
 		else:
 			if sect.remove_student(user) == Errors.SUCCESS:
-				user.remove_section(cour,sect)
+				# print("am i getting here")
+				# user.remove_section(cour,sect)
 				return Errors.SUCCESS
 			else:
 				return Errors.FAIL
@@ -23,12 +24,10 @@ class ctrl_student_drop_course:
 	def drop_course(courses: List[Course], user: User):
 			res = Errors.FAIL
 			while (res != Errors.SUCCESS):
-				if res == Errors.FAIL:
-					print("Unknown Failure!")
-				elif res == Errors.FAILED_TO_LOCATE:
+				if res == Errors.FAILED_TO_LOCATE:
 					print("Failed to locate Section")
 
-				user.print_sections()
+				# user.print_sections()
 				query = input("Enter the section name (ex. CSC-1710-01): ")
 				res = ctrl_student_drop_course.__query_runner(courses, user, query)
 			
