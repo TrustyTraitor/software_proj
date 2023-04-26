@@ -14,8 +14,8 @@ from Entities.Course import Section
 class ctrl_Admin_Add_Course:
     def add_course(courses_list: List[Course]):
         dept = input("Please Enter the Subject Code: (i.e. CSC, PSY)")
-        code = input("Enter the course code: (i.e. 1710)")
-        title = input("Enter the title: (i.e. Intro To Programming)")
+        code = input("Enter the course code (i.e. 1710): ")
+        title = input("Enter the title (i.e. Intro To Programming): ")
         desc = input("Enter the description: ")
         
         section = "01"

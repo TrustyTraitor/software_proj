@@ -21,6 +21,7 @@ class ctrl_Create_User_Account:
             print(u_type)
 
         #prompt for ssn
+        ssn = input("Enter SSN in the format xxx-xx-xxxx: ")
         while len(ssn) != 11:
             ssn = input("Enter SSN in the format xxx-xx-xxxx: ")
         password = input("Enter password: ")
