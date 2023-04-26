@@ -6,9 +6,9 @@ import json
 
 class User:
     def __init__(self,
-                 id: int, f_name: str, l_name: str,
+                 id: str, f_name: str, l_name: str,
                  ssn: str, password: str, u_type: str):
-        self.id: int = id
+        self.id: str = id
         self.first_name: str = f_name
         self.last_name: str = l_name
         self.ssn: str = ssn
@@ -98,28 +98,24 @@ class User:
         for i, user in enumerate(users):
             if user.id == user_id:
                 users.pop(i)
-                return True
-        return False
-    
-    from typing import List
-from Entities.User import User
+                return Errors.SUCCESS
+        return Errors.FAIL
 
-def admin_view_accounts(self, users: List[User], user_id: int):
-    """
-    Prints out a specific user's id, name, SSN, and permission level
-    """
-    if self.u_type != "Admin":
-        print("You do not have permission to view user accounts.")
-        return
 
-    for user in users:
-        if user.id == user_id:
-            print(
-                f'Id: {user.id}\nName: {user.first_name} {user.last_name}\nSSN: {user.ssn}\nPermission Level: {user.u_type}'
-            )
+    def admin_view_accounts(self, users: List['User'], user_id: int):
+        """
+		Prints out a specific user's id, name, SSN, and permission level
+		"""
+        if self.u_type != "Admin":
+            print("You do not have permission to view user accounts.")
             return
 
-    print("User not found.")
+        for user in users:
+            if user.id == user_id:
+                user.print()
+                return
+
+        print("User not found.")
 
 """
 Helper functions not part of User class
