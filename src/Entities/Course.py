@@ -146,7 +146,7 @@ def load_courses(users: List[User]) -> List[Course]:
     """
     courses: Course = []
 
-    with open("./data/courses.json", 'r') as file:
+    with open("src/data/courses.json", 'r') as file:
         data = json.load(file)
 
     for subj in data.keys():
